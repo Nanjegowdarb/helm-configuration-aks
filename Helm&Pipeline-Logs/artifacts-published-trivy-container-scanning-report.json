@@ -1,0 +1,29 @@
+{
+  "version": "15.0.7",
+  "scan": {
+    "analyzer": {
+      "id": "trivy",
+      "name": "Trivy",
+      "vendor": {
+        "name": "Aqua Security"
+      },
+      "version": "0.65.0"
+    },
+    "end_time": "2025-08-24T10:51:55",
+    "scanner": {
+      "id": "trivy",
+      "name": "Trivy",
+      "url": "https://github.com/aquasecurity/trivy/",
+      "vendor": {
+        "name": "Aqua Security"
+      },
+      "version": "0.65.0"
+    },
+    "start_time": "2025-08-24T10:51:55",
+    "status": "success",
+    "type": "container_scanning"
+  },
+  "vulnerabilities": [
+  ],
+  "remediations": []
+}

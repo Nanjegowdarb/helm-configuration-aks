@@ -1,0 +1,252 @@
+2025-08-24T10:50:22.7110750Z ##[section]Starting: Build and Push Docker Image to ACR
+2025-08-24T10:50:22.7118034Z ==============================================================================
+2025-08-24T10:50:22.7118170Z Task         : Azure CLI
+2025-08-24T10:50:22.7118233Z Description  : Run Azure CLI commands against an Azure subscription in a PowerShell Core/Shell script when running on Linux agent or PowerShell/PowerShell Core/Batch script when running on Windows agent.
+2025-08-24T10:50:22.7118419Z Version      : 2.259.1
+2025-08-24T10:50:22.7118482Z Author       : Microsoft Corporation
+2025-08-24T10:50:22.7118571Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli
+2025-08-24T10:50:22.7118667Z ==============================================================================
+2025-08-24T10:50:23.0549556Z [command]/usr/bin/az --version
+2025-08-24T10:50:27.6511794Z azure-cli                         2.76.0
+2025-08-24T10:50:27.6513299Z 
+2025-08-24T10:50:27.6513533Z core                              2.76.0
+2025-08-24T10:50:27.6513940Z telemetry                          1.1.0
+2025-08-24T10:50:27.6514005Z 
+2025-08-24T10:50:27.6514162Z Extensions:
+2025-08-24T10:50:27.6515598Z azure-devops                       1.0.2
+2025-08-24T10:50:27.6515732Z 
+2025-08-24T10:50:27.6515940Z Dependencies:
+2025-08-24T10:50:27.6516130Z msal                            1.33.0b1
+2025-08-24T10:50:27.6516324Z azure-mgmt-resource               23.3.0
+2025-08-24T10:50:27.6516402Z 
+2025-08-24T10:50:27.6516590Z Python location '/opt/az/bin/python3'
+2025-08-24T10:50:27.6516821Z Config directory '/home/vsts/.azure'
+2025-08-24T10:50:27.6517045Z Extensions directory '/opt/az/azcliextensions'
+2025-08-24T10:50:27.6517141Z 
+2025-08-24T10:50:27.6517386Z Python (Linux) 3.12.10 (main, Jul 29 2025, 09:28:48) [GCC 13.3.0]
+2025-08-24T10:50:27.6517524Z 
+2025-08-24T10:50:27.6517721Z Legal docs and information: aka.ms/AzureCliLegal
+2025-08-24T10:50:27.6517828Z 
+2025-08-24T10:50:27.6517883Z 
+2025-08-24T10:50:27.6518076Z Your CLI is up-to-date.
+2025-08-24T10:50:27.6566354Z Setting AZURE_CONFIG_DIR env variable to: /home/vsts/work/_temp/.azclitask
+2025-08-24T10:50:27.6576283Z Setting active cloud to: AzureCloud
+2025-08-24T10:50:27.6589088Z [command]/usr/bin/az cloud set -n AzureCloud
+2025-08-24T10:50:42.3658003Z [command]/usr/bin/az login --service-principal -u *** --tenant c9fefc2d-ec9e-4a6d-a531-556a285668dd --allow-no-subscriptions --federated-token ***
+2025-08-24T10:50:43.5361968Z [
+2025-08-24T10:50:43.5363921Z   {
+2025-08-24T10:50:43.5365191Z     "cloudName": "AzureCloud",
+2025-08-24T10:50:43.5375419Z     "homeTenantId": "c9fefc2d-ec9e-4a6d-a531-556a285668dd",
+2025-08-24T10:50:43.5375711Z     "id": "61f6fdf3-2c81-4671-a2e8-2b951ded878d",
+2025-08-24T10:50:43.5375904Z     "isDefault": true,
+2025-08-24T10:50:43.5376082Z     "managedByTenants": [],
+2025-08-24T10:50:43.5376260Z     "name": "Azure subscription 1",
+2025-08-24T10:50:43.5376457Z     "state": "Enabled",
+2025-08-24T10:50:43.5376999Z     "tenantId": "c9fefc2d-ec9e-4a6d-a531-556a285668dd",
+2025-08-24T10:50:43.5377401Z     "user": {
+2025-08-24T10:50:43.5377757Z       "name": "***",
+2025-08-24T10:50:43.5377933Z       "type": "servicePrincipal"
+2025-08-24T10:50:43.5378099Z     }
+2025-08-24T10:50:43.5378244Z   }
+2025-08-24T10:50:43.5378401Z ]
+2025-08-24T10:50:43.5382724Z [command]/usr/bin/az account set --subscription 61f6fdf3-2c81-4671-a2e8-2b951ded878d
+2025-08-24T10:50:44.1200547Z [command]/usr/bin/bash /home/vsts/work/_temp/azureclitaskscript1756032623047.sh
+2025-08-24T10:50:44.1291119Z Logging into Azure ACR...
+2025-08-24T10:50:51.6337584Z Login Succeeded
+2025-08-24T10:50:51.7939295Z Building Docker image...
+2025-08-24T10:50:52.4667265Z #0 building with "default" instance using docker driver
+2025-08-24T10:50:52.4668486Z 
+2025-08-24T10:50:52.4668743Z #1 [internal] load build definition from Dockerfile
+2025-08-24T10:50:52.4668980Z #1 transferring dockerfile: 516B done
+2025-08-24T10:50:52.4669208Z #1 DONE 0.0s
+2025-08-24T10:50:52.4669323Z 
+2025-08-24T10:50:52.4669550Z #2 [internal] load metadata for docker.io/library/node:16-alpine
+2025-08-24T10:50:53.1498084Z #2 ...
+2025-08-24T10:50:53.1498591Z 
+2025-08-24T10:50:53.1499137Z #3 [auth] library/node:pull token for registry-1.docker.io
+2025-08-24T10:50:53.1499555Z #3 DONE 0.0s
+2025-08-24T10:50:53.1499784Z 
+2025-08-24T10:50:53.1500173Z #4 [auth] library/nginx:pull token for registry-1.docker.io
+2025-08-24T10:50:53.1500360Z #4 DONE 0.0s
+2025-08-24T10:50:53.2994116Z 
+2025-08-24T10:50:53.2995807Z #5 [internal] load metadata for docker.io/library/nginx:stable-alpine
+2025-08-24T10:50:54.8306417Z #5 ...
+2025-08-24T10:50:54.8308019Z 
+2025-08-24T10:50:54.8308356Z #2 [internal] load metadata for docker.io/library/node:16-alpine
+2025-08-24T10:50:54.8308546Z #2 DONE 2.5s
+2025-08-24T10:50:54.9641757Z 
+2025-08-24T10:50:54.9645189Z #5 [internal] load metadata for docker.io/library/nginx:stable-alpine
+2025-08-24T10:50:54.9656734Z #5 DONE 2.5s
+2025-08-24T10:50:54.9656904Z 
+2025-08-24T10:50:54.9657329Z #6 [internal] load .dockerignore
+2025-08-24T10:50:54.9657567Z #6 transferring context: 2B done
+2025-08-24T10:50:54.9657781Z #6 DONE 0.0s
+2025-08-24T10:50:54.9657850Z 
+2025-08-24T10:50:54.9658139Z #7 [build-stage 1/6] FROM docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787
+2025-08-24T10:50:54.9658517Z #7 resolve docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787 0.0s done
+2025-08-24T10:50:54.9659210Z #7 sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2 0B / 2.34MB 0.1s
+2025-08-24T10:50:54.9659673Z #7 sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787 1.43kB / 1.43kB done
+2025-08-24T10:50:54.9660128Z #7 sha256:72e89a86be58c922ed7b1475e5e6f151537676470695dd106521738b060e139d 1.16kB / 1.16kB done
+2025-08-24T10:50:54.9660647Z #7 sha256:2573171e0124bb95d14d128728a52a97bb917ef45d7c4fa8cfe76bc44aa78b73 6.73kB / 6.73kB done
+2025-08-24T10:50:54.9661098Z #7 sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 0B / 3.40MB 0.1s
+2025-08-24T10:50:54.9661555Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 0B / 36.63MB 0.1s
+2025-08-24T10:50:55.1731420Z #7 sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 2.10MB / 3.40MB 0.3s
+2025-08-24T10:50:55.2838329Z #7 sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 3.40MB / 3.40MB 0.3s done
+2025-08-24T10:50:55.2838834Z #7 extracting sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de
+2025-08-24T10:50:55.2839100Z #7 sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9 0B / 452B 0.4s
+2025-08-24T10:50:55.4899003Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 6.29MB / 36.63MB 0.6s
+2025-08-24T10:50:55.5903018Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 14.00MB / 36.63MB 0.7s
+2025-08-24T10:50:55.7233661Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 25.17MB / 36.63MB 0.8s
+2025-08-24T10:50:55.7239634Z #7 extracting sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 0.4s done
+2025-08-24T10:50:55.7239984Z #7 sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9 452B / 452B 0.8s done
+2025-08-24T10:50:55.8640754Z #7 sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2 2.34MB / 2.34MB 0.9s done
+2025-08-24T10:50:55.8643676Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 36.63MB / 36.63MB 1.0s done
+2025-08-24T10:50:55.9959560Z #7 extracting sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9
+2025-08-24T10:51:00.6027647Z #7 ...
+2025-08-24T10:51:00.6027982Z 
+2025-08-24T10:51:00.6045318Z #8 [internal] load build context
+2025-08-24T10:51:00.6045743Z #8 transferring context: 90.51MB 5.3s done
+2025-08-24T10:51:00.6046046Z #8 DONE 5.6s
+2025-08-24T10:51:00.6046213Z 
+2025-08-24T10:51:00.6048005Z #9 [stage-1 1/3] FROM docker.io/library/nginx:stable-alpine@sha256:8f2bcf97c473dfe311e79a510ee540ee02e28ce1e6a64e1ef89bfad32574ef10
+2025-08-24T10:51:00.6068767Z #9 resolve docker.io/library/nginx:stable-alpine@sha256:8f2bcf97c473dfe311e79a510ee540ee02e28ce1e6a64e1ef89bfad32574ef10 0.0s done
+2025-08-24T10:51:00.6069510Z #9 sha256:8f2bcf97c473dfe311e79a510ee540ee02e28ce1e6a64e1ef89bfad32574ef10 10.32kB / 10.32kB done
+2025-08-24T10:51:00.6069916Z #9 sha256:07273e8eb118b64e6d2c1e7e0f7404566bde3901e22871f42b68422c317904c7 2.49kB / 2.49kB done
+2025-08-24T10:51:00.6070191Z #9 sha256:a97d82f709e2e0ef35e48a697aec860e12cbf2a0ffbfd95d7701976e81d470ed 10.77kB / 10.77kB done
+2025-08-24T10:51:00.6070464Z #9 sha256:0368fd46e3c6d237d81390ff086f93aee216df5cfa814041a491453fb0932a12 3.64MB / 3.64MB 1.1s done
+2025-08-24T10:51:00.6070740Z #9 sha256:669998b1fdf4ad752e6d1b278e90c3634ca699b0394fc3fe7342e72d404223d1 1.79MB / 1.79MB 1.3s done
+2025-08-24T10:51:00.6071009Z #9 sha256:95be0f4718a48e45cacbaf6e19f7aed48101465aca88a577bd84a57ee42eba1b 628B / 628B 1.5s done
+2025-08-24T10:51:00.6071289Z #9 sha256:62c31b33012d33aa0a2fe15793525a9d6d6bf9c57f1f9ec22b88a02f869b1c3e 954B / 954B 1.6s done
+2025-08-24T10:51:00.6071579Z #9 extracting sha256:0368fd46e3c6d237d81390ff086f93aee216df5cfa814041a491453fb0932a12 0.5s done
+2025-08-24T10:51:00.6071848Z #9 sha256:85a0985bea3a96919f3334aeec7cec165a06ffc948c8de0418026c0d516c7016 404B / 404B 1.7s done
+2025-08-24T10:51:00.6072115Z #9 sha256:8485f215491f7b3eccbb9a4c66ebb932c076fa9d17aa985155b6c57e132c2042 1.21kB / 1.21kB 1.8s done
+2025-08-24T10:51:00.6072387Z #9 sha256:f2d0d37ae31d4ab6192eeea9aaf8c1c83664db1db36cb22c98fd2fd259c1542c 1.40kB / 1.40kB 1.9s done
+2025-08-24T10:51:00.6072658Z #9 sha256:e585282f42862920f33200111c879a44e860b5848afce1246fdcd321700641d0 15.51MB / 15.51MB 2.2s done
+2025-08-24T10:51:00.6073115Z #9 extracting sha256:669998b1fdf4ad752e6d1b278e90c3634ca699b0394fc3fe7342e72d404223d1 0.3s done
+2025-08-24T10:51:00.6073416Z #9 extracting sha256:95be0f4718a48e45cacbaf6e19f7aed48101465aca88a577bd84a57ee42eba1b done
+2025-08-24T10:51:00.6073695Z #9 extracting sha256:62c31b33012d33aa0a2fe15793525a9d6d6bf9c57f1f9ec22b88a02f869b1c3e done
+2025-08-24T10:51:00.6073974Z #9 extracting sha256:85a0985bea3a96919f3334aeec7cec165a06ffc948c8de0418026c0d516c7016 done
+2025-08-24T10:51:00.6074250Z #9 extracting sha256:8485f215491f7b3eccbb9a4c66ebb932c076fa9d17aa985155b6c57e132c2042 done
+2025-08-24T10:51:00.6074851Z #9 extracting sha256:f2d0d37ae31d4ab6192eeea9aaf8c1c83664db1db36cb22c98fd2fd259c1542c done
+2025-08-24T10:51:00.6075145Z #9 extracting sha256:e585282f42862920f33200111c879a44e860b5848afce1246fdcd321700641d0 1.8s done
+2025-08-24T10:51:00.6075390Z #9 DONE 5.7s
+2025-08-24T10:51:00.7648525Z 
+2025-08-24T10:51:00.7652100Z #7 [build-stage 1/6] FROM docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787
+2025-08-24T10:51:01.0042592Z #7 ...
+2025-08-24T10:51:01.0043068Z 
+2025-08-24T10:51:01.0043803Z #10 [stage-1 2/3] RUN chown -R nginx:nginx /var/cache/nginx /var/run
+2025-08-24T10:51:01.0044038Z #10 DONE 0.4s
+2025-08-24T10:51:01.1235419Z 
+2025-08-24T10:51:01.1236287Z #7 [build-stage 1/6] FROM docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787
+2025-08-24T10:51:01.1236595Z #7 extracting sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 5.2s
+2025-08-24T10:51:01.6133399Z #7 extracting sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 5.5s done
+2025-08-24T10:51:01.6133898Z #7 extracting sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2
+2025-08-24T10:51:01.7276629Z #7 extracting sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2 0.1s done
+2025-08-24T10:51:01.7277399Z #7 extracting sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9
+2025-08-24T10:51:01.9416294Z #7 extracting sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9 done
+2025-08-24T10:51:01.9418498Z #7 DONE 6.9s
+2025-08-24T10:51:01.9420242Z 
+2025-08-24T10:51:01.9421219Z #11 [build-stage 2/6] WORKDIR /app
+2025-08-24T10:51:01.9422084Z #11 DONE 0.0s
+2025-08-24T10:51:01.9422156Z 
+2025-08-24T10:51:01.9423263Z #12 [build-stage 3/6] COPY package*.json ./
+2025-08-24T10:51:01.9447620Z #12 DONE 0.2s
+2025-08-24T10:51:02.0973952Z 
+2025-08-24T10:51:02.0976784Z #13 [build-stage 4/6] RUN npm install
+2025-08-24T10:51:07.6705561Z #13 5.573 npm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+2025-08-24T10:51:07.8005671Z #13 5.854 npm WARN deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2025-08-24T10:51:08.4310971Z #13 6.333 npm WARN deprecated webpack-chain@6.5.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-08-24T10:51:09.3946782Z #13 7.240 npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-08-24T10:51:09.3947585Z #13 7.296 npm WARN deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-08-24T10:51:09.9018718Z #13 7.955 npm WARN deprecated consolidate@0.15.1: Please upgrade to consolidate v1.0.0+ as it has been modernized with several long-awaited fixes implemented. Maintenance is supported by Forward Email at https://forwardemail.net ; follow/watch https://github.com/ladjs/consolidate for updates and release changelog
+2025-08-24T10:51:14.4772786Z #13 12.53 
+2025-08-24T10:51:14.4775612Z #13 12.53 added 672 packages, and audited 673 packages in 12s
+2025-08-24T10:51:14.6438920Z #13 12.53 
+2025-08-24T10:51:14.6439646Z #13 12.53 93 packages are looking for funding
+2025-08-24T10:51:14.6456717Z #13 12.53   run `npm fund` for details
+2025-08-24T10:51:14.6456996Z #13 12.54 
+2025-08-24T10:51:14.6459529Z #13 12.54 7 moderate severity vulnerabilities
+2025-08-24T10:51:14.6459788Z #13 12.54 
+2025-08-24T10:51:14.6460032Z #13 12.54 To address issues that do not require attention, run:
+2025-08-24T10:51:14.6460258Z #13 12.54   npm audit fix
+2025-08-24T10:51:14.6460441Z #13 12.54 
+2025-08-24T10:51:14.6460652Z #13 12.54 Some issues need review, and may require choosing
+2025-08-24T10:51:14.6460878Z #13 12.54 a different dependency.
+2025-08-24T10:51:14.6461067Z #13 12.54 
+2025-08-24T10:51:14.6461258Z #13 12.54 Run `npm audit` for details.
+2025-08-24T10:51:14.6461473Z #13 12.55 npm notice 
+2025-08-24T10:51:14.6461881Z #13 12.55 npm notice New major version of npm available! 8.19.4 -> 11.5.2
+2025-08-24T10:51:14.6462159Z #13 12.55 npm notice Changelog: <https://github.com/npm/cli/releases/tag/v11.5.2>
+2025-08-24T10:51:14.6462881Z #13 12.55 npm notice Run `npm install -g npm@11.5.2` to update!
+2025-08-24T10:51:14.6463111Z #13 12.55 npm notice 
+2025-08-24T10:51:15.0174649Z #13 DONE 13.1s
+2025-08-24T10:51:15.1692694Z 
+2025-08-24T10:51:15.1693962Z #14 [build-stage 5/6] COPY . .
+2025-08-24T10:51:21.0033384Z #14 DONE 6.0s
+2025-08-24T10:51:21.1539871Z 
+2025-08-24T10:51:21.1541946Z #15 [build-stage 6/6] RUN npm run build
+2025-08-24T10:51:21.7175368Z #15 0.714 
+2025-08-24T10:51:21.7176279Z #15 0.714 > vue-app@1.0.0 build
+2025-08-24T10:51:21.7177142Z #15 0.714 > vue-cli-service build
+2025-08-24T10:51:21.7185189Z #15 0.714 
+2025-08-24T10:51:22.3380468Z #15 1.333 All browser targets in the browserslist configuration have supported ES module.
+2025-08-24T10:51:22.3381128Z #15 1.333 Therefore we don't build two separate bundles for differential loading.
+2025-08-24T10:51:22.3381532Z #15 1.333 
+2025-08-24T10:51:22.5188600Z #15 1.363 
+2025-08-24T10:51:22.5192103Z #15 1.363 -  Building for production...
+2025-08-24T10:51:29.2080174Z #15 8.204  DONE  Compiled successfully in 5307ms10:51:29 AM
+2025-08-24T10:51:29.3471221Z #15 8.205 
+2025-08-24T10:51:29.3471456Z #15 8.233   File                                 Size               Gzipped
+2025-08-24T10:51:29.3471648Z #15 8.233 
+2025-08-24T10:51:29.3471824Z #15 8.233   dist/js/chunk-vendors.50f97251.js    65.36 KiB          25.23 KiB
+2025-08-24T10:51:29.3472311Z #15 8.233   dist/js/app.437100a4.js              2.82 KiB           1.45 KiB
+2025-08-24T10:51:29.3472499Z #15 8.233   dist/css/app.1d7f63d6.css            0.79 KiB           0.36 KiB
+2025-08-24T10:51:29.3472661Z #15 8.233 
+2025-08-24T10:51:29.3472823Z #15 8.233   Images and other types of assets omitted.
+2025-08-24T10:51:29.3473454Z #15 8.233   Build at: 2025-08-24T10:51:29.232Z - Hash: 543460f1b73cae08 - Time: 5307ms
+2025-08-24T10:51:29.3473640Z #15 8.233 
+2025-08-24T10:51:29.3473913Z #15 8.233  DONE  Build complete. The dist directory is ready to be deployed.
+2025-08-24T10:51:29.3480350Z #15 8.233  INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+2025-08-24T10:51:29.3480697Z #15 8.233        
+2025-08-24T10:51:29.3480870Z #15 DONE 8.3s
+2025-08-24T10:51:29.7640652Z 
+2025-08-24T10:51:29.7642620Z #16 [stage-1 3/3] COPY --from=build-stage --chown=nginx:nginx /app/dist /usr/share/nginx/html
+2025-08-24T10:51:29.9464121Z #16 DONE 0.0s
+2025-08-24T10:51:29.9464671Z 
+2025-08-24T10:51:29.9465044Z #17 exporting to image
+2025-08-24T10:51:29.9465209Z #17 exporting layers
+2025-08-24T10:51:30.0159804Z #17 exporting layers 0.2s done
+2025-08-24T10:51:30.0547878Z #17 writing image sha256:ab0e99aaed1cad106c45433dddcdf472facd86d02a9eda0a1f0fa630c267bc45 done
+2025-08-24T10:51:30.0554051Z #17 naming to frontendapplicationdemo.azurecr.io/frontend-app:latest done
+2025-08-24T10:51:30.0554773Z #17 DONE 0.2s
+2025-08-24T10:51:30.0629700Z Pushing Docker image to ACR...
+2025-08-24T10:51:30.0925318Z The push refers to repository [frontendapplicationdemo.azurecr.io/frontend-app]
+2025-08-24T10:51:30.6952011Z a256c37c9ea4: Preparing
+2025-08-24T10:51:30.6959668Z f58076df3144: Preparing
+2025-08-24T10:51:30.6960595Z 3662d61b1197: Preparing
+2025-08-24T10:51:30.6962471Z 19c101c8a6e8: Preparing
+2025-08-24T10:51:30.6962814Z d3c82e18bdb8: Preparing
+2025-08-24T10:51:30.6963170Z 72997926d63c: Preparing
+2025-08-24T10:51:30.6963331Z c79f431f2893: Preparing
+2025-08-24T10:51:30.6963504Z 60e1771cb327: Preparing
+2025-08-24T10:51:30.6963847Z f76dbf6a56fe: Preparing
+2025-08-24T10:51:30.6964005Z 7003d23cc217: Preparing
+2025-08-24T10:51:30.6964162Z c79f431f2893: Waiting
+2025-08-24T10:51:30.6964320Z 60e1771cb327: Waiting
+2025-08-24T10:51:30.6964472Z f76dbf6a56fe: Waiting
+2025-08-24T10:51:30.6964770Z 7003d23cc217: Waiting
+2025-08-24T10:51:30.6964927Z 72997926d63c: Waiting
+2025-08-24T10:51:31.9594955Z 3662d61b1197: Layer already exists
+2025-08-24T10:51:31.9615643Z d3c82e18bdb8: Layer already exists
+2025-08-24T10:51:31.9682398Z 19c101c8a6e8: Layer already exists
+2025-08-24T10:51:32.6247409Z c79f431f2893: Layer already exists
+2025-08-24T10:51:32.6279937Z 60e1771cb327: Layer already exists
+2025-08-24T10:51:32.6339106Z 72997926d63c: Layer already exists
+2025-08-24T10:51:33.2854643Z 7003d23cc217: Layer already exists
+2025-08-24T10:51:33.2879809Z f76dbf6a56fe: Layer already exists
+2025-08-24T10:51:34.1846030Z f58076df3144: Pushed
+2025-08-24T10:51:34.5468479Z a256c37c9ea4: Pushed
+2025-08-24T10:51:39.2371802Z latest: digest: sha256:3fd659c9a02d4b1f37a8e72731adcc77b40762739336942edd71d8091ae8abba size: 2406
+2025-08-24T10:51:39.2430852Z 
+2025-08-24T10:51:39.2480222Z [command]/usr/bin/az account clear
+2025-08-24T10:51:40.0037881Z ##[section]Finishing: Build and Push Docker Image to ACR
