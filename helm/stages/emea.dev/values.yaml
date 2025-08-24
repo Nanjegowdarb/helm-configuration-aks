@@ -1,0 +1,17 @@
+container:
+  resources:
+    requests:
+      memory: 100Mi
+      cpu: 100m
+    limits:
+      memory: 200Mi
+      cpu: 200m
+
+autoscale:
+  enabled: true
+  replicas:
+    min: 1
+    max: 2
+  target:
+    cpu: 80
+  

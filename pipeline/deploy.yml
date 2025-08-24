@@ -1,0 +1,33 @@
+parameters:
+  - name: environment
+    type: string
+  - name: region
+    type: string
+
+steps:
+  - task: AzureKeyVault@2
+    name: FetchSecrets
+    displayName: 'Fetch Secrets from Azure Key Vault'
+    inputs:
+      azureSubscription: $(azureSubscription)
+      KeyVaultName: 'keyVaultTestingDemo' 
+      SecretsFilter: 'resourceGroup'          
+      RunAsPreJob: false                   
+
+  - task: AzureCLI@2
+    displayName: 'Login to Azure and Set AKS Context'
+    inputs:
+      azureSubscription: $(azureSubscription)
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        echo "Setting up AKS credentials for cluster: $(aksClusterName)"
+        echo "resource-group-name (Masked): $(resourceGroup)"
+        # As Example i was fetching resource-group name from key vault and using here
+        az aks get-credentials --resource-group $(resourceGroup) --name $(aksClusterName)
+
+  - script: |
+      echo "Deploying to environment: ${{ parameters.region }} ${{ parameters.environment }}"
+      chmod +x pipeline/deploy.sh
+      ./pipeline/deploy.sh
+    displayName: 'Deploy Helm Chart to AKS'

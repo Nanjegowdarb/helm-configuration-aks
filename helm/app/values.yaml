@@ -1,0 +1,44 @@
+replicas: 1
+autoscale:
+  enabled: helm/stages/?/values.yaml
+  replicas:
+    min: helm/stages/?/values.yaml
+    max: helm/stages/?/values.yaml
+  target:
+    cpu: helm/stages/?/values.yaml
+
+strategy:
+  type: RollingUpdate
+  surge: 1
+  unavailable: 0
+
+image:
+  repository: deploy.sh
+  tag: deploy.sh
+
+container:
+  port: 80
+  probes:
+    liveness:
+      enabled: true
+      path: /
+      delay: 120
+      period: 300
+      timeout: 15
+    readiness:
+      enabled: true
+      path: /
+      delay: 30
+      period: 15
+      timeout: 15
+  resources:
+    requests:
+      cpu: helm/stages/?/values.yaml
+      memory: helm/stages/?/values.yaml
+    limits:
+      cpu: helm/stages/?/values.yaml
+      memory: helm/stages/?/values.yaml
+
+service:
+  type: LoadBalancer
+  port: 80

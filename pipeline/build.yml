@@ -1,0 +1,64 @@
+parameters:
+  - name: acrName
+    type: string
+  - name: imageName
+    type: string
+
+jobs:
+  - job: Build
+    displayName: 'Build'
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+      # Use Node.js
+      - task: UseNode@1
+        inputs:
+          version: '18.x'
+        displayName: 'Use Node.js'
+
+      # Install dependencies
+      - script: npm install
+        displayName: 'Install NPM dependencies'
+
+      - script: npm run build
+        displayName: 'Build App'
+
+      - task: AzureCLI@2
+        displayName: 'Build and Push Docker Image to ACR'
+        inputs:
+          azureSubscription: $(azureSubscription)
+          scriptType: bash
+          scriptLocation: inlineScript
+          inlineScript: |
+            echo "Logging into Azure ACR..."
+            az acr login --name ${{ parameters.acrName }}
+
+            echo "Building Docker image..."
+            docker build -t ${{ parameters.acrName }}.azurecr.io/${{ parameters.imageName }}:latest .
+
+            echo "Pushing Docker image to ACR..."
+            docker push ${{ parameters.acrName }}.azurecr.io/${{ parameters.imageName }}:latest
+
+      - script: |
+          set -e
+          echo "Pulling image from ACR..."
+          docker pull ${{ parameters.acrName }}.azurecr.io/${{ parameters.imageName }}:latest
+
+          echo "Installing Trivy scanner..."
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+          echo "Downloading GitLab template for Trivy report..."
+          curl -o gitlab.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/gitlab.tpl
+
+          echo "Running Trivy scan..."
+          trivy image --exit-code 0 --format template --template "@./gitlab.tpl" \
+            --output gl-container-scanning-report.json ${{ parameters.acrName }}.azurecr.io/${{ parameters.imageName }}:latest
+        displayName: 'Run Trivy Scan on Docker Image'
+
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: '$(System.DefaultWorkingDirectory)/gl-container-scanning-report.json'
+          artifact: 'TrivyScanReport'
+          publishLocation: 'pipeline'
+        displayName: 'Publish Trivy Scan Report'
