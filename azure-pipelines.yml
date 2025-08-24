@@ -1,0 +1,73 @@
+trigger:
+  branches:
+    include:
+      - main
+
+variables:
+  azureSubscription: 'Azure Account Access'
+
+stages:
+  - stage: Build
+    displayName: 'Build'
+    jobs:
+      - template: pipeline/build.yml
+        parameters:
+          acrName: frontendapplicationdemo 
+          imageName: frontend-app
+
+  - stage: DeployDev
+    displayName: 'Deploy to Development'
+    dependsOn: Build
+    variables:
+      - group: 'AKS-EMEA-DEV'
+    jobs:
+      - deployment: DeployDev 
+        displayName: 'Deploy to Dev Environment'
+        environment: 'Approvers'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self 
+                - template: pipeline/deploy.yml
+                  parameters:
+                    environment: dev
+                    region: emea
+
+  - stage: DeployEmeaNonProd
+    displayName: 'Deploy to emea nonprod'
+    dependsOn: DeployDev
+    variables:
+      - group: 'AKS-EMEA-NONPROD'
+    jobs:
+      - deployment: DeployTest
+        displayName: 'Deploy to amap nonprod Environment'
+        environment: 'Approvers'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self 
+                - template: pipeline/deploy.yml
+                  parameters:
+                    environment: nonprod
+                    region: emea
+
+  - stage: DeployAmapNonProd
+    displayName: 'Deploy to amap nonprod'
+    dependsOn: DeployEmeaNonProd
+    variables:
+      - group: 'AKS-AMAP-NONPROD'
+    jobs:
+      - deployment: DeployAmapNonProd
+        displayName: 'Deploy to amap nonprod Environment'
+        environment: 'Approvers'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self 
+                - template: pipeline/deploy.yml
+                  parameters:
+                    environment: nonprod
+                    region: amap

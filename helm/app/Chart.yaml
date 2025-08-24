@@ -1,0 +1,4 @@
+apiVersion: v1
+description: HelmDemo
+name: helmdemo
+version: 0.1.0
