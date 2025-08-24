@@ -1,0 +1,34 @@
+2025-08-24T10:53:00.6014789Z ##[section]Starting: Deploy Helm Chart to AKS
+2025-08-24T10:53:00.6019547Z ==============================================================================
+2025-08-24T10:53:00.6019663Z Task         : Command line
+2025-08-24T10:53:00.6019745Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T10:53:00.6019850Z Version      : 2.250.1
+2025-08-24T10:53:00.6019931Z Author       : Microsoft Corporation
+2025-08-24T10:53:00.6020004Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T10:53:00.6020130Z ==============================================================================
+2025-08-24T10:53:00.8214041Z Generating script.
+2025-08-24T10:53:00.8225913Z ========================== Starting Command Output ===========================
+2025-08-24T10:53:00.8255050Z [command]/usr/bin/bash --noprofile --norc /home/vsts/work/_temp/85774cce-73d7-47d7-8ffa-b33b370f944e.sh
+2025-08-24T10:53:00.8347534Z Deploying to environment: emea dev
+2025-08-24T10:53:00.8356647Z ENVIRONMENT: dev
+2025-08-24T10:53:00.8359126Z REGION: emea
+2025-08-24T10:53:00.8360678Z REPOSITORY: frontendapplicationdemo.azurecr.io/frontend-app
+2025-08-24T10:53:00.8360877Z IMAGE_TAG: latest
+2025-08-24T10:53:00.8376451Z apiVersion: v1
+2025-08-24T10:53:00.8376966Z description: HelmDemo
+2025-08-24T10:53:00.8378331Z name: helmdemo
+2025-08-24T10:53:00.8378503Z version: 0.1.0
+2025-08-24T10:53:00.8378674Z appVersion: 1.2.1
+2025-08-24T10:53:00.8379028Z Using values file: helm/stages/emea.dev/values.yaml
+2025-08-24T10:53:05.2262864Z Namespace demo-abb-dev already exists. Skipping creation.
+2025-08-24T10:53:07.4455456Z version.BuildInfo{Version:"v3.18.4", GitCommit:"d80839cf37d860c8aa9a0503fe463278f26cd5e2", GitTreeState:"clean", GoVersion:"go1.24.4"}
+2025-08-24T10:53:08.7400900Z Release "helmrelease" does not exist. Installing it now.
+2025-08-24T10:59:43.6017537Z NAME: helmrelease
+2025-08-24T10:59:43.6019308Z LAST DEPLOYED: Sun Aug 24 10:53:09 2025
+2025-08-24T10:59:43.6019521Z NAMESPACE: demo-abb-dev
+2025-08-24T10:59:43.6019852Z STATUS: deployed
+2025-08-24T10:59:43.6020009Z REVISION: 1
+2025-08-24T10:59:43.6020185Z TEST SUITE: None
+2025-08-24T10:59:43.6044782Z Deployment completed successfully!
+2025-08-24T10:59:43.6071091Z 
+2025-08-24T10:59:43.6138599Z ##[section]Finishing: Deploy Helm Chart to AKS

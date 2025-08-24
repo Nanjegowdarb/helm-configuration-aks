@@ -1,0 +1,555 @@
+2025-08-24T10:49:20.2172927Z ##[section]Starting: Build
+2025-08-24T10:49:20.4187082Z ##[section]Starting: Initialize job
+2025-08-24T10:49:20.4190882Z Agent name: 'Hosted Agent'
+2025-08-24T10:49:20.4191494Z Agent machine name: 'pkrvm0wv9xp8mx6'
+2025-08-24T10:49:20.4191771Z Current agent version: '4.260.0'
+2025-08-24T10:49:20.4221154Z ##[group]Runner Image Provisioner
+2025-08-24T10:49:20.4221476Z Hosted Compute Agent
+2025-08-24T10:49:20.4221727Z Version: 20250821.380
+2025-08-24T10:49:20.4222016Z Commit: 438d12cb4fe092871db9867344e3bc0bc5319035
+2025-08-24T10:49:20.4222327Z Build Date: 2025-08-21T20:49:43Z
+2025-08-24T10:49:20.4222575Z ##[endgroup]
+2025-08-24T10:49:20.4222817Z ##[group]Operating System
+2025-08-24T10:49:20.4223051Z Ubuntu
+2025-08-24T10:49:20.4223246Z 24.04.2
+2025-08-24T10:49:20.4223455Z LTS
+2025-08-24T10:49:20.4223664Z ##[endgroup]
+2025-08-24T10:49:20.4223906Z ##[group]Runner Image
+2025-08-24T10:49:20.4224153Z Image: ubuntu-24.04
+2025-08-24T10:49:20.4224393Z Version: 20250810.1.0
+2025-08-24T10:49:20.4225217Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250810.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-08-24T10:49:20.4225865Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250810.1
+2025-08-24T10:49:20.4226350Z ##[endgroup]
+2025-08-24T10:49:20.4233058Z Current image version: '20250810.1.0'
+2025-08-24T10:49:20.5733128Z Agent running as: 'vsts'
+2025-08-24T10:49:20.5787664Z Prepare build directory.
+2025-08-24T10:49:20.6064812Z Set build variables.
+2025-08-24T10:49:20.6083179Z Download all required tasks.
+2025-08-24T10:49:20.6172760Z Downloading task: UseNode (1.259.0)
+2025-08-24T10:49:21.4909635Z Downloading task: CmdLine (2.250.1)
+2025-08-24T10:49:21.7017031Z Downloading task: AzureCLI (2.259.1)
+2025-08-24T10:49:23.1024976Z Downloading task: PublishPipelineArtifact (1.242.0)
+2025-08-24T10:49:23.2775248Z Checking job knob settings.
+2025-08-24T10:49:23.2781996Z    Knob: DockerActionRetries = true Source: $(VSTSAGENT_DOCKER_ACTION_RETRIES) 
+2025-08-24T10:49:23.2783069Z    Knob: AgentToolsDirectory = /opt/hostedtoolcache Source: ${AGENT_TOOLSDIRECTORY} 
+2025-08-24T10:49:23.2786147Z    Knob: UseGitLongPaths = true Source: $(USE_GIT_LONG_PATHS) 
+2025-08-24T10:49:23.2791951Z    Knob: EnableIssueSourceValidation = true Source: $(ENABLE_ISSUE_SOURCE_VALIDATION) 
+2025-08-24T10:49:23.2795051Z    Knob: AgentEnablePipelineArtifactLargeChunkSize = true Source: $(AGENT_ENABLE_PIPELINEARTIFACT_LARGE_CHUNK_SIZE) 
+2025-08-24T10:49:23.2800544Z    Knob: ContinueAfterCancelProcessTreeKillAttempt = true Source: $(VSTSAGENT_CONTINUE_AFTER_CANCEL_PROCESSTREEKILL_ATTEMPT) 
+2025-08-24T10:49:23.2802555Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC) 
+2025-08-24T10:49:23.2803832Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC_LOG) 
+2025-08-24T10:49:23.2805543Z    Knob: ProcessHandlerTelemetry = true Source: $(AZP_75787_ENABLE_COLLECT) 
+2025-08-24T10:49:23.2806670Z    Knob: UseNewNodeHandlerTelemetry = True Source: $(DistributedTask.Agent.USENEWNODEHANDLERTELEMETRY) 
+2025-08-24T10:49:23.2808020Z    Knob: ProcessHandlerEnableNewLogic = true Source: $(AZP_75787_ENABLE_NEW_PH_LOGIC) 
+2025-08-24T10:49:23.2809663Z    Knob: EnableResourceMonitorDebugOutput = true Source: $(AZP_ENABLE_RESOURCE_MONITOR_DEBUG_OUTPUT) 
+2025-08-24T10:49:23.2811155Z    Knob: EnableResourceUtilizationWarnings = true Source: $(AZP_ENABLE_RESOURCE_UTILIZATION_WARNINGS) 
+2025-08-24T10:49:23.2812738Z    Knob: IgnoreVSTSTaskLib = true Source: $(AZP_AGENT_IGNORE_VSTSTASKLIB) 
+2025-08-24T10:49:23.2813839Z    Knob: FailJobWhenAgentDies = true Source: $(FAIL_JOB_WHEN_AGENT_DIES) 
+2025-08-24T10:49:23.2815251Z    Knob: CheckForTaskDeprecation = true Source: $(AZP_AGENT_CHECK_FOR_TASK_DEPRECATION) 
+2025-08-24T10:49:23.2816631Z    Knob: CheckIfTaskNodeRunnerIsDeprecated246 = True Source: $(DistributedTask.Agent.CheckIfTaskNodeRunnerIsDeprecated246) 
+2025-08-24T10:49:23.2818773Z    Knob: LogTaskNameInUserAgent = true Source: $(AZP_AGENT_LOG_TASKNAME_IN_USERAGENT) 
+2025-08-24T10:49:23.2821197Z    Knob: UseFetchFilterInCheckoutTask = true Source: $(AGENT_USE_FETCH_FILTER_IN_CHECKOUT_TASK) 
+2025-08-24T10:49:23.2822596Z    Knob: Rosetta2Warning = true Source: $(ROSETTA2_WARNING) 
+2025-08-24T10:49:23.2826269Z    Knob: UseSparseCheckoutInCheckoutTask = true Source: $(AGENT_USE_SPARSE_CHECKOUT_IN_CHECKOUT_TASK) 
+2025-08-24T10:49:23.2827641Z    Knob: AgentCDNConnectivityFailWarning = False Source: $(DistributedTask.Agent.AgentCDNConnectivityFailWarning) 
+2025-08-24T10:49:23.2828384Z Finished checking job knob settings.
+2025-08-24T10:49:23.3359877Z Start tracking orphan processes.
+2025-08-24T10:49:23.3593870Z ##[section]Finishing: Initialize job
+2025-08-24T10:49:23.3671253Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T10:49:23.3672388Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T10:49:23.3674023Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T10:49:23.3674930Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T10:49:23.3875921Z ##[section]Starting: Checkout HelmDemo@main to s
+2025-08-24T10:49:23.3989332Z ==============================================================================
+2025-08-24T10:49:23.3990884Z Task         : Get sources
+2025-08-24T10:49:23.3991651Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T10:49:23.3992021Z Version      : 1.0.0
+2025-08-24T10:49:23.3992499Z Author       : Microsoft
+2025-08-24T10:49:23.3993379Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T10:49:23.3993731Z ==============================================================================
+2025-08-24T10:49:23.9664047Z Syncing repository: HelmDemo (Git)
+2025-08-24T10:49:23.9918397Z ##[command]git version
+2025-08-24T10:49:24.0421606Z git version 2.50.1
+2025-08-24T10:49:24.0478414Z ##[command]git lfs version
+2025-08-24T10:49:24.1408874Z git-lfs/3.7.0 (GitHub; linux amd64; go 1.24.4)
+2025-08-24T10:49:24.1635254Z ##[command]git init "/home/vsts/work/1/s"
+2025-08-24T10:49:24.1844975Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-08-24T10:49:24.1846867Z hint: is subject to change. To configure the initial branch name to use in all
+2025-08-24T10:49:24.1849087Z hint: of your new repositories, which will suppress this warning, call:
+2025-08-24T10:49:24.1851200Z hint:
+2025-08-24T10:49:24.1851791Z hint: 	git config --global init.defaultBranch <name>
+2025-08-24T10:49:24.1852303Z hint:
+2025-08-24T10:49:24.1853829Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-08-24T10:49:24.1854722Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-08-24T10:49:24.1855310Z hint:
+2025-08-24T10:49:24.1855793Z hint: 	git branch -m <name>
+2025-08-24T10:49:24.1856259Z hint:
+2025-08-24T10:49:24.1856827Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-08-24T10:49:24.1857498Z Initialized empty Git repository in /home/vsts/work/1/s/.git/
+2025-08-24T10:49:24.1861209Z ##[command]git remote add origin https://nanjegowdarb15@dev.azure.com/nanjegowdarb15/Demo/_git/HelmDemo
+2025-08-24T10:49:24.2001241Z ##[command]git sparse-checkout disable
+2025-08-24T10:49:24.2057140Z ##[command]git config gc.auto 0
+2025-08-24T10:49:24.2078060Z ##[command]git config core.longpaths true
+2025-08-24T10:49:24.2094039Z ##[command]git config --get-all http.https://nanjegowdarb15@dev.azure.com/nanjegowdarb15/Demo/_git/HelmDemo.extraheader
+2025-08-24T10:49:24.2111705Z ##[command]git config --get-all http.extraheader
+2025-08-24T10:49:24.2662520Z ##[command]git config --get-regexp .*extraheader
+2025-08-24T10:49:24.2685171Z ##[command]git config --get-all http.proxy
+2025-08-24T10:49:24.2701341Z ##[command]git config http.version HTTP/1.1
+2025-08-24T10:49:24.2724099Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +6786379da230201982500f844251fbb963924279:refs/remotes/origin/6786379da230201982500f844251fbb963924279
+2025-08-24T10:49:24.5287145Z remote: Azure Repos        
+2025-08-24T10:49:24.5296608Z remote: 
+2025-08-24T10:49:24.5297195Z remote: Found 28 objects to send. (0 ms)        
+2025-08-24T10:49:24.5297803Z From https://dev.azure.com/nanjegowdarb15/Demo/_git/HelmDemo
+2025-08-24T10:49:24.5298699Z  * [new ref]         6786379da230201982500f844251fbb963924279 -> origin/6786379da230201982500f844251fbb963924279
+2025-08-24T10:49:24.6156110Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +6786379da230201982500f844251fbb963924279
+2025-08-24T10:49:24.6917477Z remote: Azure Repos        
+2025-08-24T10:49:24.6945481Z remote: 
+2025-08-24T10:49:24.6946020Z remote: Found 0 objects to send. (0 ms)        
+2025-08-24T10:49:24.6976880Z From https://dev.azure.com/nanjegowdarb15/Demo/_git/HelmDemo
+2025-08-24T10:49:24.6982064Z  * branch            6786379da230201982500f844251fbb963924279 -> FETCH_HEAD
+2025-08-24T10:49:24.8126907Z ##[command]git checkout --progress --force refs/remotes/origin/6786379da230201982500f844251fbb963924279
+2025-08-24T10:49:24.8143794Z Note: switching to 'refs/remotes/origin/6786379da230201982500f844251fbb963924279'.
+2025-08-24T10:49:24.8144146Z 
+2025-08-24T10:49:24.8144915Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-08-24T10:49:24.8145812Z changes and commit them, and you can discard any commits you make in this
+2025-08-24T10:49:24.8146511Z state without impacting any branches by switching back to a branch.
+2025-08-24T10:49:24.8146802Z 
+2025-08-24T10:49:24.8147389Z If you want to create a new branch to retain commits you create, you may
+2025-08-24T10:49:24.8148448Z do so (now or later) by using -c with the switch command. Example:
+2025-08-24T10:49:24.8148779Z 
+2025-08-24T10:49:24.8149305Z   git switch -c <new-branch-name>
+2025-08-24T10:49:24.8149577Z 
+2025-08-24T10:49:24.8150114Z Or undo this operation with:
+2025-08-24T10:49:24.8150377Z 
+2025-08-24T10:49:24.8150845Z   git switch -
+2025-08-24T10:49:24.8151044Z 
+2025-08-24T10:49:24.8152958Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-08-24T10:49:24.8153499Z 
+2025-08-24T10:49:24.8154149Z HEAD is now at 6786379 ADO Setup
+2025-08-24T10:49:24.8217038Z ##[section]Finishing: Checkout HelmDemo@main to s
+2025-08-24T10:49:24.8301284Z ##[section]Starting: Use Node.js
+2025-08-24T10:49:24.8316349Z ==============================================================================
+2025-08-24T10:49:24.8316783Z Task         : Use Node.js ecosystem
+2025-08-24T10:49:24.8317062Z Description  : Set up a Node.js environment and add it to the PATH, additionally providing proxy support
+2025-08-24T10:49:24.8317501Z Version      : 1.259.0
+2025-08-24T10:49:24.8317763Z Author       : Microsoft Corporation
+2025-08-24T10:49:24.8318027Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks
+2025-08-24T10:49:24.8318477Z ==============================================================================
+2025-08-24T10:49:25.2800846Z Found tool in cache: node 18.20.8 x64
+2025-08-24T10:49:25.2809032Z Prepending PATH environment variable with directory: /opt/hostedtoolcache/node/18.20.8/x64/bin
+2025-08-24T10:49:25.3918201Z ##[section]Finishing: Use Node.js
+2025-08-24T10:49:25.3986088Z ##[section]Starting: Install NPM dependencies
+2025-08-24T10:49:25.3997101Z ==============================================================================
+2025-08-24T10:49:25.3997445Z Task         : Command line
+2025-08-24T10:49:25.3997667Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T10:49:25.3997982Z Version      : 2.250.1
+2025-08-24T10:49:25.3998202Z Author       : Microsoft Corporation
+2025-08-24T10:49:25.3998823Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T10:49:25.3999388Z ==============================================================================
+2025-08-24T10:49:25.7521798Z Generating script.
+2025-08-24T10:49:25.7530441Z Script contents:
+2025-08-24T10:49:25.7533324Z npm install
+2025-08-24T10:49:25.7534975Z ========================== Starting Command Output ===========================
+2025-08-24T10:49:25.7596361Z [command]/usr/bin/bash --noprofile --norc /home/vsts/work/_temp/d42d495e-9093-4459-89e1-11b1c18b7c56.sh
+2025-08-24T10:50:08.2901337Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-08-24T10:50:08.4814038Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-08-24T10:50:08.9070948Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2025-08-24T10:50:09.6171753Z npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+2025-08-24T10:50:11.4541341Z npm warn deprecated consolidate@0.15.1: Please upgrade to consolidate v1.0.0+ as it has been modernized with several long-awaited fixes implemented. Maintenance is supported by Forward Email at https://forwardemail.net ; follow/watch https://github.com/ladjs/consolidate for updates and release changelog
+2025-08-24T10:50:12.3895721Z npm warn deprecated webpack-chain@6.5.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-08-24T10:50:15.6155394Z 
+2025-08-24T10:50:15.6158109Z added 672 packages, and audited 673 packages in 47s
+2025-08-24T10:50:15.6164074Z 
+2025-08-24T10:50:15.6169839Z 93 packages are looking for funding
+2025-08-24T10:50:15.6170119Z   run `npm fund` for details
+2025-08-24T10:50:15.6300960Z 
+2025-08-24T10:50:15.6302571Z 7 moderate severity vulnerabilities
+2025-08-24T10:50:15.6302919Z 
+2025-08-24T10:50:15.6303638Z To address issues that do not require attention, run:
+2025-08-24T10:50:15.6315405Z   npm audit fix
+2025-08-24T10:50:15.6316664Z 
+2025-08-24T10:50:15.6317220Z Some issues need review, and may require choosing
+2025-08-24T10:50:15.6318691Z a different dependency.
+2025-08-24T10:50:15.6323650Z 
+2025-08-24T10:50:15.6324193Z Run `npm audit` for details.
+2025-08-24T10:50:15.6614094Z 
+2025-08-24T10:50:15.6692507Z ##[section]Finishing: Install NPM dependencies
+2025-08-24T10:50:15.6717917Z ##[section]Starting: Build App
+2025-08-24T10:50:15.6725116Z ==============================================================================
+2025-08-24T10:50:15.6725321Z Task         : Command line
+2025-08-24T10:50:15.6725397Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T10:50:15.6725575Z Version      : 2.250.1
+2025-08-24T10:50:15.6725692Z Author       : Microsoft Corporation
+2025-08-24T10:50:15.6725896Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T10:50:15.6726062Z ==============================================================================
+2025-08-24T10:50:15.8906004Z Generating script.
+2025-08-24T10:50:15.8917024Z Script contents:
+2025-08-24T10:50:15.8917971Z npm run build
+2025-08-24T10:50:15.8918605Z ========================== Starting Command Output ===========================
+2025-08-24T10:50:15.8948889Z [command]/usr/bin/bash --noprofile --norc /home/vsts/work/_temp/048ac79e-030d-46ef-8fec-51e89d00b2e0.sh
+2025-08-24T10:50:16.1145731Z 
+2025-08-24T10:50:16.1146253Z > vue-app@1.0.0 build
+2025-08-24T10:50:16.1146434Z > vue-cli-service build
+2025-08-24T10:50:16.1146502Z 
+2025-08-24T10:50:16.6273328Z All browser targets in the browserslist configuration have supported ES module.
+2025-08-24T10:50:16.6273620Z Therefore we don't build two separate bundles for differential loading.
+2025-08-24T10:50:16.6273718Z 
+2025-08-24T10:50:16.6506565Z 
+2025-08-24T10:50:16.6512559Z -  Building for production...
+2025-08-24T10:50:22.6434255Z  DONE  Compiled successfully in 4412ms10:50:22 AM
+2025-08-24T10:50:22.6435266Z 
+2025-08-24T10:50:22.6641245Z   File                                 Size               Gzipped
+2025-08-24T10:50:22.6643421Z 
+2025-08-24T10:50:22.6644189Z   dist/js/chunk-vendors.50f97251.js    65.36 KiB          25.21 KiB
+2025-08-24T10:50:22.6644722Z   dist/js/app.437100a4.js              2.82 KiB           1.46 KiB
+2025-08-24T10:50:22.6645168Z   dist/css/app.1d7f63d6.css            0.79 KiB           0.37 KiB
+2025-08-24T10:50:22.6645532Z 
+2025-08-24T10:50:22.6645938Z   Images and other types of assets omitted.
+2025-08-24T10:50:22.6646328Z   Build at: 2025-08-24T10:50:22.661Z - Hash: d61b480adfd8d621 - Time: 4412ms
+2025-08-24T10:50:22.6646687Z 
+2025-08-24T10:50:22.6650201Z  DONE  Build complete. The dist directory is ready to be deployed.
+2025-08-24T10:50:22.6650693Z  INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+2025-08-24T10:50:22.6651752Z        
+2025-08-24T10:50:22.7001994Z 
+2025-08-24T10:50:22.7088326Z ##[section]Finishing: Build App
+2025-08-24T10:50:22.7110762Z ##[section]Starting: Build and Push Docker Image to ACR
+2025-08-24T10:50:22.7118043Z ==============================================================================
+2025-08-24T10:50:22.7118173Z Task         : Azure CLI
+2025-08-24T10:50:22.7118237Z Description  : Run Azure CLI commands against an Azure subscription in a PowerShell Core/Shell script when running on Linux agent or PowerShell/PowerShell Core/Batch script when running on Windows agent.
+2025-08-24T10:50:22.7118421Z Version      : 2.259.1
+2025-08-24T10:50:22.7118485Z Author       : Microsoft Corporation
+2025-08-24T10:50:22.7118574Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli
+2025-08-24T10:50:22.7118670Z ==============================================================================
+2025-08-24T10:50:23.0549585Z [command]/usr/bin/az --version
+2025-08-24T10:50:27.6511821Z azure-cli                         2.76.0
+2025-08-24T10:50:27.6513308Z 
+2025-08-24T10:50:27.6513767Z core                              2.76.0
+2025-08-24T10:50:27.6513943Z telemetry                          1.1.0
+2025-08-24T10:50:27.6514008Z 
+2025-08-24T10:50:27.6514165Z Extensions:
+2025-08-24T10:50:27.6515611Z azure-devops                       1.0.2
+2025-08-24T10:50:27.6515736Z 
+2025-08-24T10:50:27.6515945Z Dependencies:
+2025-08-24T10:50:27.6516133Z msal                            1.33.0b1
+2025-08-24T10:50:27.6516326Z azure-mgmt-resource               23.3.0
+2025-08-24T10:50:27.6516404Z 
+2025-08-24T10:50:27.6516593Z Python location '/opt/az/bin/python3'
+2025-08-24T10:50:27.6516824Z Config directory '/home/vsts/.azure'
+2025-08-24T10:50:27.6517049Z Extensions directory '/opt/az/azcliextensions'
+2025-08-24T10:50:27.6517143Z 
+2025-08-24T10:50:27.6517390Z Python (Linux) 3.12.10 (main, Jul 29 2025, 09:28:48) [GCC 13.3.0]
+2025-08-24T10:50:27.6517527Z 
+2025-08-24T10:50:27.6517724Z Legal docs and information: aka.ms/AzureCliLegal
+2025-08-24T10:50:27.6517830Z 
+2025-08-24T10:50:27.6517901Z 
+2025-08-24T10:50:27.6518083Z Your CLI is up-to-date.
+2025-08-24T10:50:27.6566369Z Setting AZURE_CONFIG_DIR env variable to: /home/vsts/work/_temp/.azclitask
+2025-08-24T10:50:27.6576297Z Setting active cloud to: AzureCloud
+2025-08-24T10:50:27.6589100Z [command]/usr/bin/az cloud set -n AzureCloud
+2025-08-24T10:50:42.3658023Z [command]/usr/bin/az login --service-principal -u *** --tenant c9fefc2d-ec9e-4a6d-a531-556a285668dd --allow-no-subscriptions --federated-token ***
+2025-08-24T10:50:43.5362000Z [
+2025-08-24T10:50:43.5363925Z   {
+2025-08-24T10:50:43.5365197Z     "cloudName": "AzureCloud",
+2025-08-24T10:50:43.5375437Z     "homeTenantId": "c9fefc2d-ec9e-4a6d-a531-556a285668dd",
+2025-08-24T10:50:43.5375714Z     "id": "61f6fdf3-2c81-4671-a2e8-2b951ded878d",
+2025-08-24T10:50:43.5375907Z     "isDefault": true,
+2025-08-24T10:50:43.5376085Z     "managedByTenants": [],
+2025-08-24T10:50:43.5376263Z     "name": "Azure subscription 1",
+2025-08-24T10:50:43.5376460Z     "state": "Enabled",
+2025-08-24T10:50:43.5377191Z     "tenantId": "c9fefc2d-ec9e-4a6d-a531-556a285668dd",
+2025-08-24T10:50:43.5377405Z     "user": {
+2025-08-24T10:50:43.5377760Z       "name": "***",
+2025-08-24T10:50:43.5377935Z       "type": "servicePrincipal"
+2025-08-24T10:50:43.5378101Z     }
+2025-08-24T10:50:43.5378246Z   }
+2025-08-24T10:50:43.5378404Z ]
+2025-08-24T10:50:43.5382729Z [command]/usr/bin/az account set --subscription 61f6fdf3-2c81-4671-a2e8-2b951ded878d
+2025-08-24T10:50:44.1200574Z [command]/usr/bin/bash /home/vsts/work/_temp/azureclitaskscript1756032623047.sh
+2025-08-24T10:50:44.1291145Z Logging into Azure ACR...
+2025-08-24T10:50:51.6337615Z Login Succeeded
+2025-08-24T10:50:51.7939329Z Building Docker image...
+2025-08-24T10:50:52.4667303Z #0 building with "default" instance using docker driver
+2025-08-24T10:50:52.4668492Z 
+2025-08-24T10:50:52.4668746Z #1 [internal] load build definition from Dockerfile
+2025-08-24T10:50:52.4668985Z #1 transferring dockerfile: 516B done
+2025-08-24T10:50:52.4669212Z #1 DONE 0.0s
+2025-08-24T10:50:52.4669326Z 
+2025-08-24T10:50:52.4670073Z #2 [internal] load metadata for docker.io/library/node:16-alpine
+2025-08-24T10:50:53.1498113Z #2 ...
+2025-08-24T10:50:53.1498598Z 
+2025-08-24T10:50:53.1499142Z #3 [auth] library/node:pull token for registry-1.docker.io
+2025-08-24T10:50:53.1499559Z #3 DONE 0.0s
+2025-08-24T10:50:53.1499810Z 
+2025-08-24T10:50:53.1500178Z #4 [auth] library/nginx:pull token for registry-1.docker.io
+2025-08-24T10:50:53.1500363Z #4 DONE 0.0s
+2025-08-24T10:50:53.2994162Z 
+2025-08-24T10:50:53.2995814Z #5 [internal] load metadata for docker.io/library/nginx:stable-alpine
+2025-08-24T10:50:54.8306457Z #5 ...
+2025-08-24T10:50:54.8308032Z 
+2025-08-24T10:50:54.8308360Z #2 [internal] load metadata for docker.io/library/node:16-alpine
+2025-08-24T10:50:54.8308549Z #2 DONE 2.5s
+2025-08-24T10:50:54.9641808Z 
+2025-08-24T10:50:54.9645203Z #5 [internal] load metadata for docker.io/library/nginx:stable-alpine
+2025-08-24T10:50:54.9656754Z #5 DONE 2.5s
+2025-08-24T10:50:54.9656908Z 
+2025-08-24T10:50:54.9657334Z #6 [internal] load .dockerignore
+2025-08-24T10:50:54.9657579Z #6 transferring context: 2B done
+2025-08-24T10:50:54.9657785Z #6 DONE 0.0s
+2025-08-24T10:50:54.9657853Z 
+2025-08-24T10:50:54.9658144Z #7 [build-stage 1/6] FROM docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787
+2025-08-24T10:50:54.9658520Z #7 resolve docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787 0.0s done
+2025-08-24T10:50:54.9659214Z #7 sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2 0B / 2.34MB 0.1s
+2025-08-24T10:50:54.9659676Z #7 sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787 1.43kB / 1.43kB done
+2025-08-24T10:50:54.9660131Z #7 sha256:72e89a86be58c922ed7b1475e5e6f151537676470695dd106521738b060e139d 1.16kB / 1.16kB done
+2025-08-24T10:50:54.9660651Z #7 sha256:2573171e0124bb95d14d128728a52a97bb917ef45d7c4fa8cfe76bc44aa78b73 6.73kB / 6.73kB done
+2025-08-24T10:50:54.9661105Z #7 sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 0B / 3.40MB 0.1s
+2025-08-24T10:50:54.9661558Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 0B / 36.63MB 0.1s
+2025-08-24T10:50:55.1731453Z #7 sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 2.10MB / 3.40MB 0.3s
+2025-08-24T10:50:55.2838367Z #7 sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 3.40MB / 3.40MB 0.3s done
+2025-08-24T10:50:55.2838838Z #7 extracting sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de
+2025-08-24T10:50:55.2839103Z #7 sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9 0B / 452B 0.4s
+2025-08-24T10:50:55.4899049Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 6.29MB / 36.63MB 0.6s
+2025-08-24T10:50:55.5903057Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 14.00MB / 36.63MB 0.7s
+2025-08-24T10:50:55.7233688Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 25.17MB / 36.63MB 0.8s
+2025-08-24T10:50:55.7239662Z #7 extracting sha256:7264a8db6415046d36d16ba98b79778e18accee6ffa71850405994cffa9be7de 0.4s done
+2025-08-24T10:50:55.7239987Z #7 sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9 452B / 452B 0.8s done
+2025-08-24T10:50:55.8640792Z #7 sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2 2.34MB / 2.34MB 0.9s done
+2025-08-24T10:50:55.8643687Z #7 sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 36.63MB / 36.63MB 1.0s done
+2025-08-24T10:50:55.9959596Z #7 extracting sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9
+2025-08-24T10:51:00.6027678Z #7 ...
+2025-08-24T10:51:00.6027989Z 
+2025-08-24T10:51:00.6045331Z #8 [internal] load build context
+2025-08-24T10:51:00.6045747Z #8 transferring context: 90.51MB 5.3s done
+2025-08-24T10:51:00.6046051Z #8 DONE 5.6s
+2025-08-24T10:51:00.6046217Z 
+2025-08-24T10:51:00.6048292Z #9 [stage-1 1/3] FROM docker.io/library/nginx:stable-alpine@sha256:8f2bcf97c473dfe311e79a510ee540ee02e28ce1e6a64e1ef89bfad32574ef10
+2025-08-24T10:51:00.6068782Z #9 resolve docker.io/library/nginx:stable-alpine@sha256:8f2bcf97c473dfe311e79a510ee540ee02e28ce1e6a64e1ef89bfad32574ef10 0.0s done
+2025-08-24T10:51:00.6069532Z #9 sha256:8f2bcf97c473dfe311e79a510ee540ee02e28ce1e6a64e1ef89bfad32574ef10 10.32kB / 10.32kB done
+2025-08-24T10:51:00.6069920Z #9 sha256:07273e8eb118b64e6d2c1e7e0f7404566bde3901e22871f42b68422c317904c7 2.49kB / 2.49kB done
+2025-08-24T10:51:00.6070193Z #9 sha256:a97d82f709e2e0ef35e48a697aec860e12cbf2a0ffbfd95d7701976e81d470ed 10.77kB / 10.77kB done
+2025-08-24T10:51:00.6070468Z #9 sha256:0368fd46e3c6d237d81390ff086f93aee216df5cfa814041a491453fb0932a12 3.64MB / 3.64MB 1.1s done
+2025-08-24T10:51:00.6070742Z #9 sha256:669998b1fdf4ad752e6d1b278e90c3634ca699b0394fc3fe7342e72d404223d1 1.79MB / 1.79MB 1.3s done
+2025-08-24T10:51:00.6071011Z #9 sha256:95be0f4718a48e45cacbaf6e19f7aed48101465aca88a577bd84a57ee42eba1b 628B / 628B 1.5s done
+2025-08-24T10:51:00.6071313Z #9 sha256:62c31b33012d33aa0a2fe15793525a9d6d6bf9c57f1f9ec22b88a02f869b1c3e 954B / 954B 1.6s done
+2025-08-24T10:51:00.6071582Z #9 extracting sha256:0368fd46e3c6d237d81390ff086f93aee216df5cfa814041a491453fb0932a12 0.5s done
+2025-08-24T10:51:00.6071850Z #9 sha256:85a0985bea3a96919f3334aeec7cec165a06ffc948c8de0418026c0d516c7016 404B / 404B 1.7s done
+2025-08-24T10:51:00.6072117Z #9 sha256:8485f215491f7b3eccbb9a4c66ebb932c076fa9d17aa985155b6c57e132c2042 1.21kB / 1.21kB 1.8s done
+2025-08-24T10:51:00.6072389Z #9 sha256:f2d0d37ae31d4ab6192eeea9aaf8c1c83664db1db36cb22c98fd2fd259c1542c 1.40kB / 1.40kB 1.9s done
+2025-08-24T10:51:00.6072660Z #9 sha256:e585282f42862920f33200111c879a44e860b5848afce1246fdcd321700641d0 15.51MB / 15.51MB 2.2s done
+2025-08-24T10:51:00.6073135Z #9 extracting sha256:669998b1fdf4ad752e6d1b278e90c3634ca699b0394fc3fe7342e72d404223d1 0.3s done
+2025-08-24T10:51:00.6073419Z #9 extracting sha256:95be0f4718a48e45cacbaf6e19f7aed48101465aca88a577bd84a57ee42eba1b done
+2025-08-24T10:51:00.6073701Z #9 extracting sha256:62c31b33012d33aa0a2fe15793525a9d6d6bf9c57f1f9ec22b88a02f869b1c3e done
+2025-08-24T10:51:00.6073977Z #9 extracting sha256:85a0985bea3a96919f3334aeec7cec165a06ffc948c8de0418026c0d516c7016 done
+2025-08-24T10:51:00.6074252Z #9 extracting sha256:8485f215491f7b3eccbb9a4c66ebb932c076fa9d17aa985155b6c57e132c2042 done
+2025-08-24T10:51:00.6074854Z #9 extracting sha256:f2d0d37ae31d4ab6192eeea9aaf8c1c83664db1db36cb22c98fd2fd259c1542c done
+2025-08-24T10:51:00.6075164Z #9 extracting sha256:e585282f42862920f33200111c879a44e860b5848afce1246fdcd321700641d0 1.8s done
+2025-08-24T10:51:00.6075394Z #9 DONE 5.7s
+2025-08-24T10:51:00.7648573Z 
+2025-08-24T10:51:00.7652108Z #7 [build-stage 1/6] FROM docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787
+2025-08-24T10:51:01.0042635Z #7 ...
+2025-08-24T10:51:01.0043073Z 
+2025-08-24T10:51:01.0043808Z #10 [stage-1 2/3] RUN chown -R nginx:nginx /var/cache/nginx /var/run
+2025-08-24T10:51:01.0044043Z #10 DONE 0.4s
+2025-08-24T10:51:01.1235467Z 
+2025-08-24T10:51:01.1236325Z #7 [build-stage 1/6] FROM docker.io/library/node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787
+2025-08-24T10:51:01.1236598Z #7 extracting sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 5.2s
+2025-08-24T10:51:01.6133445Z #7 extracting sha256:eee371b9ce3ffdbb8aa703b9a14d318801ddc3468f096bb6cfeabbeb715147f9 5.5s done
+2025-08-24T10:51:01.6133902Z #7 extracting sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2
+2025-08-24T10:51:01.7276660Z #7 extracting sha256:93b3025fe10392717d06ec0d012a9ffa2039d766a322aac899c6831dd93382c2 0.1s done
+2025-08-24T10:51:01.7277404Z #7 extracting sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9
+2025-08-24T10:51:01.9416323Z #7 extracting sha256:d9059661ce70092af66d2773666584fc8addcb78a2be63f720022f4875577ea9 done
+2025-08-24T10:51:01.9418508Z #7 DONE 6.9s
+2025-08-24T10:51:01.9420250Z 
+2025-08-24T10:51:01.9421253Z #11 [build-stage 2/6] WORKDIR /app
+2025-08-24T10:51:01.9422090Z #11 DONE 0.0s
+2025-08-24T10:51:01.9422813Z 
+2025-08-24T10:51:01.9423270Z #12 [build-stage 3/6] COPY package*.json ./
+2025-08-24T10:51:01.9447636Z #12 DONE 0.2s
+2025-08-24T10:51:02.0973993Z 
+2025-08-24T10:51:02.0976792Z #13 [build-stage 4/6] RUN npm install
+2025-08-24T10:51:07.6705600Z #13 5.573 npm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+2025-08-24T10:51:07.8005706Z #13 5.854 npm WARN deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2025-08-24T10:51:08.4311011Z #13 6.333 npm WARN deprecated webpack-chain@6.5.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-08-24T10:51:09.3946845Z #13 7.240 npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-08-24T10:51:09.3947590Z #13 7.296 npm WARN deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-08-24T10:51:09.9018763Z #13 7.955 npm WARN deprecated consolidate@0.15.1: Please upgrade to consolidate v1.0.0+ as it has been modernized with several long-awaited fixes implemented. Maintenance is supported by Forward Email at https://forwardemail.net ; follow/watch https://github.com/ladjs/consolidate for updates and release changelog
+2025-08-24T10:51:14.4772816Z #13 12.53 
+2025-08-24T10:51:14.4775626Z #13 12.53 added 672 packages, and audited 673 packages in 12s
+2025-08-24T10:51:14.6438950Z #13 12.53 
+2025-08-24T10:51:14.6439651Z #13 12.53 93 packages are looking for funding
+2025-08-24T10:51:14.6456735Z #13 12.53   run `npm fund` for details
+2025-08-24T10:51:14.6457000Z #13 12.54 
+2025-08-24T10:51:14.6459576Z #13 12.54 7 moderate severity vulnerabilities
+2025-08-24T10:51:14.6459813Z #13 12.54 
+2025-08-24T10:51:14.6460036Z #13 12.54 To address issues that do not require attention, run:
+2025-08-24T10:51:14.6460262Z #13 12.54   npm audit fix
+2025-08-24T10:51:14.6460445Z #13 12.54 
+2025-08-24T10:51:14.6460656Z #13 12.54 Some issues need review, and may require choosing
+2025-08-24T10:51:14.6460882Z #13 12.54 a different dependency.
+2025-08-24T10:51:14.6461070Z #13 12.54 
+2025-08-24T10:51:14.6461260Z #13 12.54 Run `npm audit` for details.
+2025-08-24T10:51:14.6461476Z #13 12.55 npm notice 
+2025-08-24T10:51:14.6461887Z #13 12.55 npm notice New major version of npm available! 8.19.4 -> 11.5.2
+2025-08-24T10:51:14.6462162Z #13 12.55 npm notice Changelog: <https://github.com/npm/cli/releases/tag/v11.5.2>
+2025-08-24T10:51:14.6462887Z #13 12.55 npm notice Run `npm install -g npm@11.5.2` to update!
+2025-08-24T10:51:14.6463114Z #13 12.55 npm notice 
+2025-08-24T10:51:15.0174684Z #13 DONE 13.1s
+2025-08-24T10:51:15.1692738Z 
+2025-08-24T10:51:15.1693968Z #14 [build-stage 5/6] COPY . .
+2025-08-24T10:51:21.0033622Z #14 DONE 6.0s
+2025-08-24T10:51:21.1539907Z 
+2025-08-24T10:51:21.1541955Z #15 [build-stage 6/6] RUN npm run build
+2025-08-24T10:51:21.7175397Z #15 0.714 
+2025-08-24T10:51:21.7176287Z #15 0.714 > vue-app@1.0.0 build
+2025-08-24T10:51:21.7177147Z #15 0.714 > vue-cli-service build
+2025-08-24T10:51:21.7185207Z #15 0.714 
+2025-08-24T10:51:22.3380577Z #15 1.333 All browser targets in the browserslist configuration have supported ES module.
+2025-08-24T10:51:22.3381133Z #15 1.333 Therefore we don't build two separate bundles for differential loading.
+2025-08-24T10:51:22.3381538Z #15 1.333 
+2025-08-24T10:51:22.5188632Z #15 1.363 
+2025-08-24T10:51:22.5192114Z #15 1.363 -  Building for production...
+2025-08-24T10:51:29.2080208Z #15 8.204  DONE  Compiled successfully in 5307ms10:51:29 AM
+2025-08-24T10:51:29.3471256Z #15 8.205 
+2025-08-24T10:51:29.3471460Z #15 8.233   File                                 Size               Gzipped
+2025-08-24T10:51:29.3471651Z #15 8.233 
+2025-08-24T10:51:29.3472069Z #15 8.233   dist/js/chunk-vendors.50f97251.js    65.36 KiB          25.23 KiB
+2025-08-24T10:51:29.3472314Z #15 8.233   dist/js/app.437100a4.js              2.82 KiB           1.45 KiB
+2025-08-24T10:51:29.3472502Z #15 8.233   dist/css/app.1d7f63d6.css            0.79 KiB           0.36 KiB
+2025-08-24T10:51:29.3472663Z #15 8.233 
+2025-08-24T10:51:29.3472826Z #15 8.233   Images and other types of assets omitted.
+2025-08-24T10:51:29.3473458Z #15 8.233   Build at: 2025-08-24T10:51:29.232Z - Hash: 543460f1b73cae08 - Time: 5307ms
+2025-08-24T10:51:29.3473643Z #15 8.233 
+2025-08-24T10:51:29.3473917Z #15 8.233  DONE  Build complete. The dist directory is ready to be deployed.
+2025-08-24T10:51:29.3480363Z #15 8.233  INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+2025-08-24T10:51:29.3480701Z #15 8.233        
+2025-08-24T10:51:29.3480874Z #15 DONE 8.3s
+2025-08-24T10:51:29.7640694Z 
+2025-08-24T10:51:29.7642656Z #16 [stage-1 3/3] COPY --from=build-stage --chown=nginx:nginx /app/dist /usr/share/nginx/html
+2025-08-24T10:51:29.9464157Z #16 DONE 0.0s
+2025-08-24T10:51:29.9464694Z 
+2025-08-24T10:51:29.9465048Z #17 exporting to image
+2025-08-24T10:51:29.9465215Z #17 exporting layers
+2025-08-24T10:51:30.0159833Z #17 exporting layers 0.2s done
+2025-08-24T10:51:30.0547913Z #17 writing image sha256:ab0e99aaed1cad106c45433dddcdf472facd86d02a9eda0a1f0fa630c267bc45 done
+2025-08-24T10:51:30.0554064Z #17 naming to frontendapplicationdemo.azurecr.io/frontend-app:latest done
+2025-08-24T10:51:30.0554779Z #17 DONE 0.2s
+2025-08-24T10:51:30.0629726Z Pushing Docker image to ACR...
+2025-08-24T10:51:30.0925649Z The push refers to repository [frontendapplicationdemo.azurecr.io/frontend-app]
+2025-08-24T10:51:30.6952087Z a256c37c9ea4: Preparing
+2025-08-24T10:51:30.6959681Z f58076df3144: Preparing
+2025-08-24T10:51:30.6960613Z 3662d61b1197: Preparing
+2025-08-24T10:51:30.6962476Z 19c101c8a6e8: Preparing
+2025-08-24T10:51:30.6962817Z d3c82e18bdb8: Preparing
+2025-08-24T10:51:30.6963173Z 72997926d63c: Preparing
+2025-08-24T10:51:30.6963345Z c79f431f2893: Preparing
+2025-08-24T10:51:30.6963523Z 60e1771cb327: Preparing
+2025-08-24T10:51:30.6963849Z f76dbf6a56fe: Preparing
+2025-08-24T10:51:30.6964007Z 7003d23cc217: Preparing
+2025-08-24T10:51:30.6964164Z c79f431f2893: Waiting
+2025-08-24T10:51:30.6964322Z 60e1771cb327: Waiting
+2025-08-24T10:51:30.6964474Z f76dbf6a56fe: Waiting
+2025-08-24T10:51:30.6964773Z 7003d23cc217: Waiting
+2025-08-24T10:51:30.6964929Z 72997926d63c: Waiting
+2025-08-24T10:51:31.9594994Z 3662d61b1197: Layer already exists
+2025-08-24T10:51:31.9615737Z d3c82e18bdb8: Layer already exists
+2025-08-24T10:51:31.9682415Z 19c101c8a6e8: Layer already exists
+2025-08-24T10:51:32.6247444Z c79f431f2893: Layer already exists
+2025-08-24T10:51:32.6279954Z 60e1771cb327: Layer already exists
+2025-08-24T10:51:32.6339120Z 72997926d63c: Layer already exists
+2025-08-24T10:51:33.2854745Z 7003d23cc217: Layer already exists
+2025-08-24T10:51:33.2879824Z f76dbf6a56fe: Layer already exists
+2025-08-24T10:51:34.1846071Z f58076df3144: Pushed
+2025-08-24T10:51:34.5468566Z a256c37c9ea4: Pushed
+2025-08-24T10:51:39.2371837Z latest: digest: sha256:3fd659c9a02d4b1f37a8e72731adcc77b40762739336942edd71d8091ae8abba size: 2406
+2025-08-24T10:51:39.2430867Z 
+2025-08-24T10:51:39.2480242Z [command]/usr/bin/az account clear
+2025-08-24T10:51:40.0037903Z ##[section]Finishing: Build and Push Docker Image to ACR
+2025-08-24T10:51:40.0082029Z ##[section]Starting: Run Trivy Scan on Docker Image
+2025-08-24T10:51:40.0086812Z ==============================================================================
+2025-08-24T10:51:40.0086928Z Task         : Command line
+2025-08-24T10:51:40.0086994Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T10:51:40.0087121Z Version      : 2.250.1
+2025-08-24T10:51:40.0087188Z Author       : Microsoft Corporation
+2025-08-24T10:51:40.0087279Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T10:51:40.0087390Z ==============================================================================
+2025-08-24T10:51:40.2414345Z Generating script.
+2025-08-24T10:51:40.2425275Z ========================== Starting Command Output ===========================
+2025-08-24T10:51:40.2456784Z [command]/usr/bin/bash --noprofile --norc /home/vsts/work/_temp/18a9554a-83c3-42f6-a1f7-a0af1b3ceda3.sh
+2025-08-24T10:51:40.2550741Z Pulling image from ACR...
+2025-08-24T10:51:42.7734144Z latest: Pulling from frontend-app
+2025-08-24T10:51:42.7753879Z Digest: sha256:3fd659c9a02d4b1f37a8e72731adcc77b40762739336942edd71d8091ae8abba
+2025-08-24T10:51:42.7754363Z Status: Image is up to date for frontendapplicationdemo.azurecr.io/frontend-app:latest
+2025-08-24T10:51:42.7770325Z frontendapplicationdemo.azurecr.io/frontend-app:latest
+2025-08-24T10:51:42.7795506Z Installing Trivy scanner...
+2025-08-24T10:51:43.1472272Z aquasecurity/trivy info checking GitHub for latest tag
+2025-08-24T10:51:43.8398569Z aquasecurity/trivy info found version: 0.65.0 for v0.65.0/Linux/64bit
+2025-08-24T10:51:46.8609469Z aquasecurity/trivy info installed /usr/local/bin/trivy
+2025-08-24T10:51:46.8951068Z Downloading GitLab template for Trivy report...
+2025-08-24T10:51:46.9034812Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2025-08-24T10:51:46.9042134Z                                  Dload  Upload   Total   Spent    Left  Speed
+2025-08-24T10:51:46.9042626Z 
+2025-08-24T10:51:47.2651660Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-08-24T10:51:47.2656616Z 100  3484  100  3484    0     0   9616      0 --:--:-- --:--:-- --:--:--  9624
+2025-08-24T10:51:47.2690544Z Running Trivy scan...
+2025-08-24T10:51:47.3824013Z 2025-08-24T10:51:47Z	INFO	[vulndb] Need to update DB
+2025-08-24T10:51:47.3824669Z 2025-08-24T10:51:47Z	INFO	[vulndb] Downloading vulnerability DB...
+2025-08-24T10:51:47.3825061Z 2025-08-24T10:51:47Z	INFO	[vulndb] Downloading artifact...	repo="mirror.gcr.io/aquasec/trivy-db:2"
+2025-08-24T10:51:51.6042789Z 1.64 MiB / 68.92 MiB [->_____________________________________________________________] 2.38% ? p/s ?19.78 MiB / 68.92 MiB [----------------->___________________________________________] 28.70% ? p/s ?41.20 MiB / 68.92 MiB [------------------------------------>________________________] 59.78% ? p/s ?62.62 MiB / 68.92 MiB [------------------------------------------>____] 90.85% 101.38 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [--------------------------------------------->] 100.00% 101.38 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [--------------------------------------------->] 100.00% 101.38 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 95.52 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 95.52 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 95.52 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 89.36 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 89.36 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 89.36 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 83.59 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 83.59 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 83.59 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 78.20 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 78.20 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [---------------------------------------------->] 100.00% 78.20 MiB p/s ETA 0s68.92 MiB / 68.92 MiB [-------------------------------------------------] 100.00% 20.27 MiB p/s 3.6s2025-08-24T10:51:51Z	INFO	[vulndb] Artifact successfully downloaded	repo="mirror.gcr.io/aquasec/trivy-db:2"
+2025-08-24T10:51:51.6052743Z 2025-08-24T10:51:51Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-08-24T10:51:51.6057006Z 2025-08-24T10:51:51Z	INFO	[secret] Secret scanning is enabled
+2025-08-24T10:51:51.6057662Z 2025-08-24T10:51:51Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2025-08-24T10:51:51.6058323Z 2025-08-24T10:51:51Z	INFO	[secret] Please see also https://trivy.dev/v0.65/docs/scanner/secret#recommendation for faster secret detection
+2025-08-24T10:51:55.2683760Z 2025-08-24T10:51:55Z	INFO	Detected OS	family="alpine" version="3.21.4"
+2025-08-24T10:51:55.2687805Z 2025-08-24T10:51:55Z	INFO	[alpine] Detecting vulnerabilities...	os_version="3.21" repository="3.21" pkg_num=68
+2025-08-24T10:51:55.2787716Z 2025-08-24T10:51:55Z	INFO	Number of language-specific files	num=0
+2025-08-24T10:51:55.2952822Z 
+2025-08-24T10:51:55.3016958Z ##[section]Finishing: Run Trivy Scan on Docker Image
+2025-08-24T10:51:55.3038773Z ##[section]Starting: Publish Trivy Scan Report
+2025-08-24T10:51:55.3043225Z ==============================================================================
+2025-08-24T10:51:55.3043350Z Task         : Publish Pipeline Artifacts
+2025-08-24T10:51:55.3043421Z Description  : Publish (upload) a file or directory as a named artifact for the current run
+2025-08-24T10:51:55.3043535Z Version      : 1.242.0
+2025-08-24T10:51:55.3043597Z Author       : Microsoft Corporation
+2025-08-24T10:51:55.3043911Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/publish-pipeline-artifact
+2025-08-24T10:51:55.3044059Z ==============================================================================
+2025-08-24T10:51:55.6282266Z Artifact name input: TrivyScanReport
+2025-08-24T10:51:55.6421415Z Uploading pipeline artifact from /home/vsts/work/1/s/gl-container-scanning-report.json for build #152
+2025-08-24T10:51:56.5807068Z Using default max parallelism.
+2025-08-24T10:51:56.5811206Z Max dedup parallelism: 192
+2025-08-24T10:51:56.5811411Z DomainId: 0
+2025-08-24T10:51:56.7359616Z ApplicationInsightsTelemetrySender will correlate events with X-TFS-Session b109262d-d046-4a45-9dd5-448d00d41f46
+2025-08-24T10:51:56.7486736Z Hashtype: Dedup1024K
+2025-08-24T10:51:56.7689792Z DedupManifestArtifactClient will correlate http requests with X-TFS-Session b109262d-d046-4a45-9dd5-448d00d41f46
+2025-08-24T10:51:56.8743232Z 1 files processed.
+2025-08-24T10:51:56.8754254Z Processed 1 files from /home/vsts/work/1/s successfully.
+2025-08-24T10:51:57.4398442Z Uploaded 793 out of 793 bytes
+2025-08-24T10:51:57.4400075Z Content upload is done!
+2025-08-24T10:51:57.4430994Z 
+2025-08-24T10:51:57.4431788Z Content upload statistics:
+2025-08-24T10:51:57.4432656Z Total Content: 1.4 KB
+2025-08-24T10:51:57.4432858Z Physical Content Uploaded: 0.5 KB
+2025-08-24T10:51:57.4433066Z Logical Content Uploaded: 0.8 KB
+2025-08-24T10:51:57.4433265Z Compression Saved: 0.3 KB
+2025-08-24T10:51:57.4433461Z Deduplication Saved: 0.6 KB
+2025-08-24T10:51:57.4433671Z Number of Chunks Uploaded: 2
+2025-08-24T10:51:57.4433859Z Total Number of Chunks: 3
+2025-08-24T10:51:57.4434314Z 
+2025-08-24T10:51:57.6334441Z Associated artifact 19 with build 152
+2025-08-24T10:51:58.2763965Z ApplicationInsightsTelemetrySender correlated 2 events with X-TFS-Session b109262d-d046-4a45-9dd5-448d00d41f46
+2025-08-24T10:51:58.2773364Z Uploading pipeline artifact finished.
+2025-08-24T10:51:58.2992809Z ##[section]Finishing: Publish Trivy Scan Report
+2025-08-24T10:51:58.3018791Z ##[section]Starting: Checkout HelmDemo@main to s
+2025-08-24T10:51:58.3021789Z ==============================================================================
+2025-08-24T10:51:58.3021924Z Task         : Get sources
+2025-08-24T10:51:58.3022012Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T10:51:58.3022127Z Version      : 1.0.0
+2025-08-24T10:51:58.3022211Z Author       : Microsoft
+2025-08-24T10:51:58.3022280Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T10:51:58.3022383Z ==============================================================================
+2025-08-24T10:51:58.6944109Z Cleaning any cached credential from repository: HelmDemo (Git)
+2025-08-24T10:51:58.7097181Z ##[section]Finishing: Checkout HelmDemo@main to s
+2025-08-24T10:51:58.7127562Z ##[section]Starting: Finalize Job
+2025-08-24T10:51:58.7143910Z Cleaning up task key
+2025-08-24T10:51:58.7145732Z Start cleaning up orphan processes.
+2025-08-24T10:51:58.7413324Z ##[section]Finishing: Finalize Job
+2025-08-24T10:51:58.7440054Z ##[section]Finishing: Build

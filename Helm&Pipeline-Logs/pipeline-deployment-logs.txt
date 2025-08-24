@@ -1,0 +1,293 @@
+2025-08-24T10:52:36.6530136Z ##[section]Starting: Deploy to Dev Environment
+2025-08-24T10:52:36.8674959Z ##[section]Starting: Initialize job
+2025-08-24T10:52:36.8679578Z Agent name: 'Hosted Agent'
+2025-08-24T10:52:36.8680315Z Agent machine name: 'pkrvm0wv9xp8mx6'
+2025-08-24T10:52:36.8680629Z Current agent version: '4.260.0'
+2025-08-24T10:52:36.8713211Z ##[group]Runner Image Provisioner
+2025-08-24T10:52:36.8713588Z Hosted Compute Agent
+2025-08-24T10:52:36.8713881Z Version: 20250821.380
+2025-08-24T10:52:36.8714198Z Commit: 438d12cb4fe092871db9867344e3bc0bc5319035
+2025-08-24T10:52:36.8714529Z Build Date: 2025-08-21T20:49:43Z
+2025-08-24T10:52:36.8714991Z ##[endgroup]
+2025-08-24T10:52:36.8715270Z ##[group]Operating System
+2025-08-24T10:52:36.8715542Z Ubuntu
+2025-08-24T10:52:36.8715760Z 24.04.2
+2025-08-24T10:52:36.8715984Z LTS
+2025-08-24T10:52:36.8716225Z ##[endgroup]
+2025-08-24T10:52:36.8716481Z ##[group]Runner Image
+2025-08-24T10:52:36.8716760Z Image: ubuntu-24.04
+2025-08-24T10:52:36.8717033Z Version: 20250810.1.0
+2025-08-24T10:52:36.8717637Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250810.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-08-24T10:52:36.8718111Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250810.1
+2025-08-24T10:52:36.8718435Z ##[endgroup]
+2025-08-24T10:52:36.8723380Z Current image version: '20250810.1.0'
+2025-08-24T10:52:37.0482706Z Agent running as: 'vsts'
+2025-08-24T10:52:37.0550797Z Prepare build directory.
+2025-08-24T10:52:37.0871373Z Set build variables.
+2025-08-24T10:52:37.0891481Z Download all required tasks.
+2025-08-24T10:52:37.0990969Z Downloading task: DownloadPipelineArtifact (1.230.0)
+2025-08-24T10:52:37.2005125Z Downloading task: AzureKeyVault (2.259.2)
+2025-08-24T10:52:38.9225827Z Downloading task: AzureCLI (2.259.1)
+2025-08-24T10:52:40.5455900Z Downloading task: CmdLine (2.250.1)
+2025-08-24T10:52:40.9403194Z Checking job knob settings.
+2025-08-24T10:52:40.9409139Z    Knob: DockerActionRetries = true Source: $(VSTSAGENT_DOCKER_ACTION_RETRIES) 
+2025-08-24T10:52:40.9411119Z    Knob: AgentToolsDirectory = /opt/hostedtoolcache Source: ${AGENT_TOOLSDIRECTORY} 
+2025-08-24T10:52:40.9415285Z    Knob: UseGitLongPaths = true Source: $(USE_GIT_LONG_PATHS) 
+2025-08-24T10:52:40.9419289Z    Knob: EnableIssueSourceValidation = true Source: $(ENABLE_ISSUE_SOURCE_VALIDATION) 
+2025-08-24T10:52:40.9421203Z    Knob: AgentEnablePipelineArtifactLargeChunkSize = true Source: $(AGENT_ENABLE_PIPELINEARTIFACT_LARGE_CHUNK_SIZE) 
+2025-08-24T10:52:40.9426827Z    Knob: ContinueAfterCancelProcessTreeKillAttempt = true Source: $(VSTSAGENT_CONTINUE_AFTER_CANCEL_PROCESSTREEKILL_ATTEMPT) 
+2025-08-24T10:52:40.9428340Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC) 
+2025-08-24T10:52:40.9429393Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC_LOG) 
+2025-08-24T10:52:40.9430386Z    Knob: ProcessHandlerTelemetry = true Source: $(AZP_75787_ENABLE_COLLECT) 
+2025-08-24T10:52:40.9431528Z    Knob: UseNewNodeHandlerTelemetry = True Source: $(DistributedTask.Agent.USENEWNODEHANDLERTELEMETRY) 
+2025-08-24T10:52:40.9432897Z    Knob: ProcessHandlerEnableNewLogic = true Source: $(AZP_75787_ENABLE_NEW_PH_LOGIC) 
+2025-08-24T10:52:40.9434554Z    Knob: EnableResourceMonitorDebugOutput = true Source: $(AZP_ENABLE_RESOURCE_MONITOR_DEBUG_OUTPUT) 
+2025-08-24T10:52:40.9435721Z    Knob: EnableResourceUtilizationWarnings = true Source: $(AZP_ENABLE_RESOURCE_UTILIZATION_WARNINGS) 
+2025-08-24T10:52:40.9437384Z    Knob: IgnoreVSTSTaskLib = true Source: $(AZP_AGENT_IGNORE_VSTSTASKLIB) 
+2025-08-24T10:52:40.9438409Z    Knob: FailJobWhenAgentDies = true Source: $(FAIL_JOB_WHEN_AGENT_DIES) 
+2025-08-24T10:52:40.9439662Z    Knob: CheckForTaskDeprecation = true Source: $(AZP_AGENT_CHECK_FOR_TASK_DEPRECATION) 
+2025-08-24T10:52:40.9442449Z    Knob: CheckIfTaskNodeRunnerIsDeprecated246 = True Source: $(DistributedTask.Agent.CheckIfTaskNodeRunnerIsDeprecated246) 
+2025-08-24T10:52:40.9445158Z    Knob: LogTaskNameInUserAgent = true Source: $(AZP_AGENT_LOG_TASKNAME_IN_USERAGENT) 
+2025-08-24T10:52:40.9447712Z    Knob: UseFetchFilterInCheckoutTask = true Source: $(AGENT_USE_FETCH_FILTER_IN_CHECKOUT_TASK) 
+2025-08-24T10:52:40.9449369Z    Knob: Rosetta2Warning = true Source: $(ROSETTA2_WARNING) 
+2025-08-24T10:52:40.9452327Z    Knob: UseSparseCheckoutInCheckoutTask = true Source: $(AGENT_USE_SPARSE_CHECKOUT_IN_CHECKOUT_TASK) 
+2025-08-24T10:52:40.9453725Z    Knob: AgentCDNConnectivityFailWarning = False Source: $(DistributedTask.Agent.AgentCDNConnectivityFailWarning) 
+2025-08-24T10:52:40.9454311Z Finished checking job knob settings.
+2025-08-24T10:52:41.0020490Z Start tracking orphan processes.
+2025-08-24T10:52:41.0215001Z ##[section]Finishing: Initialize job
+2025-08-24T10:52:41.0290567Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T10:52:41.0291661Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T10:52:41.0294342Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T10:52:41.0295086Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T10:52:41.0499307Z ##[section]Starting: Fetch Secrets from Azure Key Vault
+2025-08-24T10:52:41.0631394Z ==============================================================================
+2025-08-24T10:52:41.0633417Z Task         : Azure Key Vault
+2025-08-24T10:52:41.0634243Z Description  : Download Azure Key Vault secrets
+2025-08-24T10:52:41.0634558Z Version      : 2.259.2
+2025-08-24T10:52:41.0635082Z Author       : Microsoft Corporation
+2025-08-24T10:52:41.0635600Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault
+2025-08-24T10:52:41.0636144Z ==============================================================================
+2025-08-24T10:52:41.7224913Z ##[section]Finishing: Fetch Secrets from Azure Key Vault
+2025-08-24T10:52:41.7299843Z ##[section]Starting: Download Artifact
+2025-08-24T10:52:41.7315569Z ==============================================================================
+2025-08-24T10:52:41.7315976Z Task         : Download pipeline artifact
+2025-08-24T10:52:41.7316254Z Description  : Download a named artifact from a pipeline to a local path
+2025-08-24T10:52:41.7316653Z Version      : 1.230.0
+2025-08-24T10:52:41.7316870Z Author       : Microsoft Corporation
+2025-08-24T10:52:41.7317138Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/download-pipeline-artifact
+2025-08-24T10:52:41.7317512Z ==============================================================================
+2025-08-24T10:52:42.1295105Z Download from the specified build: #152
+2025-08-24T10:52:42.1303692Z Download artifact to: /home/vsts/work/1/
+2025-08-24T10:52:42.8171719Z Downloading 1 pipeline artifacts...
+2025-08-24T10:52:43.3929975Z Using default max parallelism.
+2025-08-24T10:52:43.3930672Z Max dedup parallelism: 192
+2025-08-24T10:52:43.3931397Z DomainId: 0
+2025-08-24T10:52:43.5340966Z ApplicationInsightsTelemetrySender will correlate events with X-TFS-Session 560c517a-d6e9-4425-8334-5d78016fc2f7
+2025-08-24T10:52:43.5480983Z Hashtype: Dedup1024K
+2025-08-24T10:52:43.5707027Z DedupManifestArtifactClient will correlate http requests with X-TFS-Session 560c517a-d6e9-4425-8334-5d78016fc2f7
+2025-08-24T10:52:43.5710309Z Start downloading artifact - TrivyScanReport
+2025-08-24T10:52:43.5738228Z Minimatch patterns: [**]
+2025-08-24T10:52:43.8752726Z Filtered 1 files from the Minimatch filters supplied.
+2025-08-24T10:52:43.8790744Z Downloaded 0.0 MB out of 0.0 MB (0%).
+2025-08-24T10:52:44.1057068Z Downloaded 0.0 MB out of 0.0 MB (100%).
+2025-08-24T10:52:44.1079489Z 
+2025-08-24T10:52:44.1080582Z Download statistics:
+2025-08-24T10:52:44.1081363Z Total Content: 0.0 MB
+2025-08-24T10:52:44.1082305Z Physical Content Downloaded: 0.0 MB
+2025-08-24T10:52:44.1083314Z Compression Saved: 0.0 MB
+2025-08-24T10:52:44.1083522Z Local Caching Saved: 0.0 MB
+2025-08-24T10:52:44.1083696Z Chunks Downloaded: 1
+2025-08-24T10:52:44.1083873Z Nodes Downloaded: 0
+2025-08-24T10:52:44.1083941Z 
+2025-08-24T10:52:44.1118545Z Download completed.
+2025-08-24T10:52:44.8300737Z ApplicationInsightsTelemetrySender correlated 2 events with X-TFS-Session 560c517a-d6e9-4425-8334-5d78016fc2f7
+2025-08-24T10:52:44.8314225Z Downloading artifact finished.
+2025-08-24T10:52:44.8513821Z ##[section]Finishing: Download Artifact
+2025-08-24T10:52:44.8543190Z ##[section]Starting: Checkout HelmDemo@main to s
+2025-08-24T10:52:44.8556123Z ==============================================================================
+2025-08-24T10:52:44.8556279Z Task         : Get sources
+2025-08-24T10:52:44.8556373Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T10:52:44.8556485Z Version      : 1.0.0
+2025-08-24T10:52:44.8556563Z Author       : Microsoft
+2025-08-24T10:52:44.8557173Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T10:52:44.8557304Z ==============================================================================
+2025-08-24T10:52:45.2834049Z Syncing repository: HelmDemo (Git)
+2025-08-24T10:52:45.3660010Z ##[command]git version
+2025-08-24T10:52:45.4174491Z git version 2.50.1
+2025-08-24T10:52:45.4216213Z ##[command]git lfs version
+2025-08-24T10:52:45.5117589Z git-lfs/3.7.0 (GitHub; linux amd64; go 1.24.4)
+2025-08-24T10:52:45.5356318Z ##[command]git init "/home/vsts/work/1/s"
+2025-08-24T10:52:45.5517267Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-08-24T10:52:45.5518106Z hint: is subject to change. To configure the initial branch name to use in all
+2025-08-24T10:52:45.5518643Z hint: of your new repositories, which will suppress this warning, call:
+2025-08-24T10:52:45.5519132Z hint:
+2025-08-24T10:52:45.5519525Z hint: 	git config --global init.defaultBranch <name>
+2025-08-24T10:52:45.5519879Z hint:
+2025-08-24T10:52:45.5520250Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-08-24T10:52:45.5520832Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-08-24T10:52:45.5521551Z hint:
+2025-08-24T10:52:45.5521981Z hint: 	git branch -m <name>
+2025-08-24T10:52:45.5523388Z hint:
+2025-08-24T10:52:45.5523638Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-08-24T10:52:45.5532820Z Initialized empty Git repository in /home/vsts/work/1/s/.git/
+2025-08-24T10:52:45.5583784Z ##[command]git remote add origin https://nanjegowdarb15@dev.azure.com/nanjegowdarb15/Demo/_git/HelmDemo
+2025-08-24T10:52:45.5664218Z ##[command]git sparse-checkout disable
+2025-08-24T10:52:45.5745118Z ##[command]git config gc.auto 0
+2025-08-24T10:52:45.5797428Z ##[command]git config core.longpaths true
+2025-08-24T10:52:45.6004544Z ##[command]git config --get-all http.https://nanjegowdarb15@dev.azure.com/nanjegowdarb15/Demo/_git/HelmDemo.extraheader
+2025-08-24T10:52:45.6055638Z ##[command]git config --get-all http.extraheader
+2025-08-24T10:52:45.6087724Z ##[command]git config --get-regexp .*extraheader
+2025-08-24T10:52:45.6133031Z ##[command]git config --get-all http.proxy
+2025-08-24T10:52:45.6167349Z ##[command]git config http.version HTTP/1.1
+2025-08-24T10:52:45.6237848Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +6786379da230201982500f844251fbb963924279:refs/remotes/origin/6786379da230201982500f844251fbb963924279
+2025-08-24T10:52:45.8464056Z remote: Azure Repos        
+2025-08-24T10:52:45.8582838Z remote: 
+2025-08-24T10:52:45.8583973Z remote: Found 28 objects to send. (13 ms)        
+2025-08-24T10:52:45.8775666Z From https://dev.azure.com/nanjegowdarb15/Demo/_git/HelmDemo
+2025-08-24T10:52:45.8776133Z  * [new ref]         6786379da230201982500f844251fbb963924279 -> origin/6786379da230201982500f844251fbb963924279
+2025-08-24T10:52:45.9426069Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +6786379da230201982500f844251fbb963924279
+2025-08-24T10:52:46.1049164Z remote: Azure Repos        
+2025-08-24T10:52:46.1049381Z remote: 
+2025-08-24T10:52:46.1049960Z remote: Found 0 objects to send. (0 ms)        
+2025-08-24T10:52:46.1097485Z From https://dev.azure.com/nanjegowdarb15/Demo/_git/HelmDemo
+2025-08-24T10:52:46.1103793Z  * branch            6786379da230201982500f844251fbb963924279 -> FETCH_HEAD
+2025-08-24T10:52:46.1733129Z ##[command]git checkout --progress --force refs/remotes/origin/6786379da230201982500f844251fbb963924279
+2025-08-24T10:52:46.1737735Z Note: switching to 'refs/remotes/origin/6786379da230201982500f844251fbb963924279'.
+2025-08-24T10:52:46.1737870Z 
+2025-08-24T10:52:46.1738296Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-08-24T10:52:46.1738779Z changes and commit them, and you can discard any commits you make in this
+2025-08-24T10:52:46.1739022Z state without impacting any branches by switching back to a branch.
+2025-08-24T10:52:46.1739114Z 
+2025-08-24T10:52:46.1739318Z If you want to create a new branch to retain commits you create, you may
+2025-08-24T10:52:46.1739732Z do so (now or later) by using -c with the switch command. Example:
+2025-08-24T10:52:46.1739866Z 
+2025-08-24T10:52:46.1740215Z   git switch -c <new-branch-name>
+2025-08-24T10:52:46.1740289Z 
+2025-08-24T10:52:46.1740472Z Or undo this operation with:
+2025-08-24T10:52:46.1740569Z 
+2025-08-24T10:52:46.1740974Z   git switch -
+2025-08-24T10:52:46.1741044Z 
+2025-08-24T10:52:46.1741275Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-08-24T10:52:46.1741396Z 
+2025-08-24T10:52:46.1741570Z HEAD is now at 6786379 ADO Setup
+2025-08-24T10:52:46.1761891Z ##[section]Finishing: Checkout HelmDemo@main to s
+2025-08-24T10:52:46.1786565Z ##[section]Starting: Fetch Secrets from Azure Key Vault
+2025-08-24T10:52:46.1793860Z ==============================================================================
+2025-08-24T10:52:46.1794008Z Task         : Azure Key Vault
+2025-08-24T10:52:46.1794110Z Description  : Download Azure Key Vault secrets
+2025-08-24T10:52:46.1794209Z Version      : 2.259.2
+2025-08-24T10:52:46.1794304Z Author       : Microsoft Corporation
+2025-08-24T10:52:46.1794411Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault
+2025-08-24T10:52:46.1794553Z ==============================================================================
+2025-08-24T10:52:46.6018195Z SubscriptionId: 61f6fdf3-2c81-4671-a2e8-2b951ded878d.
+2025-08-24T10:52:46.6018484Z Key vault name: keyVaultTestingDemo.
+2025-08-24T10:52:46.6028842Z Downloading secret value for: resourceGroup.
+2025-08-24T10:52:47.9918153Z ##[section]Finishing: Fetch Secrets from Azure Key Vault
+2025-08-24T10:52:47.9942615Z ##[section]Starting: Login to Azure and Set AKS Context
+2025-08-24T10:52:47.9948936Z ==============================================================================
+2025-08-24T10:52:47.9949062Z Task         : Azure CLI
+2025-08-24T10:52:47.9949124Z Description  : Run Azure CLI commands against an Azure subscription in a PowerShell Core/Shell script when running on Linux agent or PowerShell/PowerShell Core/Batch script when running on Windows agent.
+2025-08-24T10:52:47.9949662Z Version      : 2.259.1
+2025-08-24T10:52:47.9949725Z Author       : Microsoft Corporation
+2025-08-24T10:52:47.9949812Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli
+2025-08-24T10:52:47.9949909Z ==============================================================================
+2025-08-24T10:52:48.3266968Z [command]/usr/bin/az --version
+2025-08-24T10:52:50.1232737Z azure-cli                         2.76.0
+2025-08-24T10:52:50.1233273Z 
+2025-08-24T10:52:50.1237722Z core                              2.76.0
+2025-08-24T10:52:50.1237952Z telemetry                          1.1.0
+2025-08-24T10:52:50.1238018Z 
+2025-08-24T10:52:50.1238215Z Extensions:
+2025-08-24T10:52:50.1238435Z azure-devops                       1.0.2
+2025-08-24T10:52:50.1238654Z 
+2025-08-24T10:52:50.1238885Z Dependencies:
+2025-08-24T10:52:50.1239094Z msal                            1.33.0b1
+2025-08-24T10:52:50.1239309Z azure-mgmt-resource               23.3.0
+2025-08-24T10:52:50.1239624Z 
+2025-08-24T10:52:50.1239854Z Python location '/opt/az/bin/python3'
+2025-08-24T10:52:50.1240126Z Config directory '/home/vsts/.azure'
+2025-08-24T10:52:50.1240371Z Extensions directory '/opt/az/azcliextensions'
+2025-08-24T10:52:50.1240495Z 
+2025-08-24T10:52:50.1240983Z Python (Linux) 3.12.10 (main, Jul 29 2025, 09:28:48) [GCC 13.3.0]
+2025-08-24T10:52:50.1241088Z 
+2025-08-24T10:52:50.1241382Z Legal docs and information: aka.ms/AzureCliLegal
+2025-08-24T10:52:50.1241465Z 
+2025-08-24T10:52:50.1241513Z 
+2025-08-24T10:52:50.1241711Z Your CLI is up-to-date.
+2025-08-24T10:52:50.1314035Z Setting AZURE_CONFIG_DIR env variable to: /home/vsts/work/_temp/.azclitask
+2025-08-24T10:52:50.1315138Z Setting active cloud to: AzureCloud
+2025-08-24T10:52:50.1322458Z [command]/usr/bin/az cloud set -n AzureCloud
+2025-08-24T10:52:55.7270434Z [command]/usr/bin/az login --service-principal -u *** --tenant c9fefc2d-ec9e-4a6d-a531-556a285668dd --allow-no-subscriptions --federated-token ***
+2025-08-24T10:52:56.9427435Z [
+2025-08-24T10:52:56.9427980Z   {
+2025-08-24T10:52:56.9428290Z     "cloudName": "AzureCloud",
+2025-08-24T10:52:56.9428565Z     "homeTenantId": "c9fefc2d-ec9e-4a6d-a531-556a285668dd",
+2025-08-24T10:52:56.9428861Z     "id": "61f6fdf3-2c81-4671-a2e8-2b951ded878d",
+2025-08-24T10:52:56.9429167Z     "isDefault": true,
+2025-08-24T10:52:56.9429384Z     "managedByTenants": [],
+2025-08-24T10:52:56.9429812Z     "name": "Azure subscription 1",
+2025-08-24T10:52:56.9430243Z     "state": "Enabled",
+2025-08-24T10:52:56.9430657Z     "tenantId": "c9fefc2d-ec9e-4a6d-a531-556a285668dd",
+2025-08-24T10:52:56.9430931Z     "user": {
+2025-08-24T10:52:56.9431282Z       "name": "***",
+2025-08-24T10:52:56.9431491Z       "type": "servicePrincipal"
+2025-08-24T10:52:56.9431660Z     }
+2025-08-24T10:52:56.9431912Z   }
+2025-08-24T10:52:56.9433052Z ]
+2025-08-24T10:52:56.9450140Z [command]/usr/bin/az account set --subscription 61f6fdf3-2c81-4671-a2e8-2b951ded878d
+2025-08-24T10:52:57.4796060Z [command]/usr/bin/bash /home/vsts/work/_temp/azureclitaskscript1756032768319.sh
+2025-08-24T10:52:57.4880117Z Setting up AKS credentials for cluster: demo-aks-cluster
+2025-08-24T10:52:57.4889407Z resource-group-name (Masked): ***
+2025-08-24T10:52:59.6395654Z WARNING: Merged "demo-aks-cluster" as current context in /home/vsts/.kube/config
+2025-08-24T10:52:59.7806788Z 
+2025-08-24T10:52:59.7857355Z [command]/usr/bin/az account clear
+2025-08-24T10:53:00.5991461Z ##[section]Finishing: Login to Azure and Set AKS Context
+2025-08-24T10:53:00.6014800Z ##[section]Starting: Deploy Helm Chart to AKS
+2025-08-24T10:53:00.6019557Z ==============================================================================
+2025-08-24T10:53:00.6019666Z Task         : Command line
+2025-08-24T10:53:00.6019749Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T10:53:00.6019852Z Version      : 2.250.1
+2025-08-24T10:53:00.6019934Z Author       : Microsoft Corporation
+2025-08-24T10:53:00.6020007Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T10:53:00.6020133Z ==============================================================================
+2025-08-24T10:53:00.8214066Z Generating script.
+2025-08-24T10:53:00.8225923Z ========================== Starting Command Output ===========================
+2025-08-24T10:53:00.8255061Z [command]/usr/bin/bash --noprofile --norc /home/vsts/work/_temp/85774cce-73d7-47d7-8ffa-b33b370f944e.sh
+2025-08-24T10:53:00.8347624Z Deploying to environment: emea dev
+2025-08-24T10:53:00.8356659Z ENVIRONMENT: dev
+2025-08-24T10:53:00.8359136Z REGION: emea
+2025-08-24T10:53:00.8360685Z REPOSITORY: frontendapplicationdemo.azurecr.io/frontend-app
+2025-08-24T10:53:00.8360881Z IMAGE_TAG: latest
+2025-08-24T10:53:00.8376498Z apiVersion: v1
+2025-08-24T10:53:00.8376971Z description: HelmDemo
+2025-08-24T10:53:00.8378335Z name: helmdemo
+2025-08-24T10:53:00.8378505Z version: 0.1.0
+2025-08-24T10:53:00.8378676Z appVersion: 1.2.1
+2025-08-24T10:53:00.8379032Z Using values file: helm/stages/emea.dev/values.yaml
+2025-08-24T10:53:05.2262904Z Namespace demo-abb-dev already exists. Skipping creation.
+2025-08-24T10:53:07.4455497Z version.BuildInfo{Version:"v3.18.4", GitCommit:"d80839cf37d860c8aa9a0503fe463278f26cd5e2", GitTreeState:"clean", GoVersion:"go1.24.4"}
+2025-08-24T10:53:08.7400935Z Release "helmrelease" does not exist. Installing it now.
+2025-08-24T10:59:43.6017578Z NAME: helmrelease
+2025-08-24T10:59:43.6019342Z LAST DEPLOYED: Sun Aug 24 10:53:09 2025
+2025-08-24T10:59:43.6019524Z NAMESPACE: demo-abb-dev
+2025-08-24T10:59:43.6019854Z STATUS: deployed
+2025-08-24T10:59:43.6020012Z REVISION: 1
+2025-08-24T10:59:43.6020188Z TEST SUITE: None
+2025-08-24T10:59:43.6044795Z Deployment completed successfully!
+2025-08-24T10:59:43.6071109Z 
+2025-08-24T10:59:43.6138608Z ##[section]Finishing: Deploy Helm Chart to AKS
+2025-08-24T10:59:43.6161562Z ##[section]Starting: Checkout HelmDemo@main to s
+2025-08-24T10:59:43.6164594Z ==============================================================================
+2025-08-24T10:59:43.6164728Z Task         : Get sources
+2025-08-24T10:59:43.6164791Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T10:59:43.6164910Z Version      : 1.0.0
+2025-08-24T10:59:43.6164970Z Author       : Microsoft
+2025-08-24T10:59:43.6165055Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T10:59:43.6165145Z ==============================================================================
+2025-08-24T10:59:44.0097204Z Cleaning any cached credential from repository: HelmDemo (Git)
+2025-08-24T10:59:44.0446492Z ##[section]Finishing: Checkout HelmDemo@main to s
+2025-08-24T10:59:44.0473746Z ##[section]Starting: Finalize Job
+2025-08-24T10:59:44.0489660Z Cleaning up task key
+2025-08-24T10:59:44.0490461Z Start cleaning up orphan processes.
+2025-08-24T10:59:44.0697679Z ##[section]Finishing: Finalize Job
+2025-08-24T10:59:44.0725763Z ##[section]Finishing: Deploy to Dev Environment
